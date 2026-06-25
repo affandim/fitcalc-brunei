@@ -14,29 +14,43 @@ Premium health/fitness calculator platform.
 - SEO: per-page metadata, OpenGraph/Twitter cards, JSON-LD WebSite schema, `next-sitemap` (auto sitemap.xml + robots.txt on build)
 - PWA manifest (`public/manifest.webmanifest`) — add real icon files at `public/icons/icon-192.png` and `icon-512.png` before shipping
 
-## Milestone 2 — First 5 calculators (done)
+## Milestones 2 & 3 — All 20 calculators (done)
 
-Fully built with real forms, formulas, charts and long-form articles:
+Every calculator from the original brief is now live with a real form, formula, result
+visualization, breadcrumb + FAQ JSON-LD, share/print actions, related calculators, and an
+original SEO article:
 
-- **BMI Calculator** (`/calculators/bmi-calculator`)
-- **Body Fat Calculator** (`/calculators/body-fat-calculator`) — US Navy method
-- **BMR Calculator** (`/calculators/bmr-calculator`) — Mifflin-St Jeor
-- **TDEE Calculator** (`/calculators/tdee-calculator`)
-- **Calories Calculator** (`/calculators/calories-calculator`) — with macro split
+| Calculator | Formula |
+|---|---|
+| BMI | WHO standard |
+| Body Fat | US Navy circumference method |
+| Muscle Mass | Estimated from lean body mass |
+| Lean Body Mass | Boer formula |
+| FFMI | Fat-Free Mass Index, height-normalized |
+| Ideal Weight | Devine formula |
+| Calories | TDEE ± goal adjustment, with macro split |
+| Protein | g/kg by activity goal |
+| Water Intake | ml/kg + activity bonus |
+| BMR | Mifflin-St Jeor |
+| TDEE | BMR × activity multiplier |
+| Macro | Custom adjustable protein/carb/fat split |
+| Body Surface Area | Mosteller formula |
+| Waist-to-Height Ratio | WHtR with risk bands |
+| Waist-Hip Ratio | WHO gender-specific thresholds |
+| Heart Rate Zone | Tanaka max HR, 5 zones |
+| Target Heart Rate | Karvonen formula |
+| Pace | Distance/time → pace + speed |
+| Running | Riegel formula race time prediction |
+| Walking Calories | MET-based estimate |
 
 Each one includes:
 - React Hook Form + Zod validation
-- A shared, unit-tested calculation engine (`lib/formulas.ts`, tested in `lib/formulas.test.ts`)
+- A shared, unit-tested calculation engine (`lib/formulas.ts`, tested in `lib/formulas.test.ts` — 24 passing tests)
 - Live result cards, range bars, and Recharts visualizations
 - Breadcrumb + FAQPage JSON-LD schema (`components/calculators/calculator-shell.tsx`)
 - Share / Print actions
 - Related calculators
 - A long-form, original SEO article (formula, interpretation, limitations, common mistakes, references)
-
-The remaining 15 calculators from the original list (Muscle Mass, Lean Body Mass, FFMI, Ideal Weight,
-Protein, Water Intake, Macro, Body Surface Area, Waist-to-Height Ratio, Waist-Hip Ratio, Heart Rate
-Zone, Target Heart Rate, Pace, Running, Walking Calories) currently render the Milestone-1 stub page
-at `/calculators/[slug]` and are the next batch to build using the same pattern.
 
 ## Getting started
 
@@ -64,9 +78,8 @@ npm run start
 
 `next-sitemap` regenerates `public/sitemap.xml` and `public/robots.txt` automatically after every build — update `siteUrl` in `next-sitemap.config.js` and `config/site.ts` once you have a real domain.
 
-## Next steps (Milestone 3)
+## Next steps (Milestone 4)
 
-Build out the remaining 15 calculators using the same reusable pattern: a pure function in
-`lib/formulas.ts`, a form component in `components/calculators/`, and a page in
-`app/calculators/[slug]/page.tsx` using `CalculatorShell`.
-
+Build out remaining content depth: 500+ SEO articles, finance calculators (100+), unit
+converters (50+), multi-language content (Bahasa Melayu Brunei / Bahasa Indonesia translations),
+real PWA icons, and og-image.png.
