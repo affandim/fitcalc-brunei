@@ -3,12 +3,15 @@ import type { Metadata } from "next";
 import { calculators } from "@/data/calculators";
 import { InArticleAd } from "@/components/ads/ad-slots";
 
+type PageParams = Promise<{ slug: string }>;
+
 export function generateStaticParams() {
   return calculators.map((c) => ({ slug: c.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const calc = calculators.find((c) => c.slug === params.slug);
+export async function generateMetadata({ params }: { params: PageParams }): Promise<Metadata> {
+  const { slug } = await params;
+  const calc = calculators.find((c) => c.slug === slug);
   if (!calc) return {};
   return {
     title: calc.title,
@@ -16,8 +19,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function CalculatorPage({ params }: { params: { slug: string } }) {
-  const calc = calculators.find((c) => c.slug === params.slug);
+export default async function CalculatorPage({ params }: { params: PageParams }) {
+  const { slug } = await params;
+  const calc = calculators.find((c) => c.slug === slug);
   if (!calc) return notFound();
 
   return (
@@ -28,7 +32,7 @@ export default function CalculatorPage({ params }: { params: { slug: string } })
 
       <div className="mt-10 rounded-card border border-dashed border-border bg-surface-muted/50 p-10 text-center text-sm text-foreground/50">
         The interactive {calc.title.toLowerCase()} form, formula breakdown, chart and
-        article ship in Milestone 2.
+        article are coming soon.
       </div>
 
       <div className="mt-8">

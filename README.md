@@ -94,6 +94,11 @@ passing tests):
 
 ## Fixes
 
+- **Critical bug fixed**: dynamic routes (`/category/[slug]`, `/calculators/[slug]`,
+  `/articles/[slug]`) were reading `params` synchronously, but Next.js 15+ made `params` a
+  Promise for page props. This caused every category page (and the articles fallback route) to
+  silently 404 in production despite building successfully — `params.slug` was always
+  `undefined`. All three routes now correctly `await params`.
 - **Header navigation** now highlights the active section (Health/Fitness/Nutrition/Finance/
   Converters/Articles) based on the current path, both desktop and mobile menus.
 

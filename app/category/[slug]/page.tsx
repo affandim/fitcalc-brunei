@@ -5,12 +5,15 @@ import { categories } from "@/data/categories";
 import { getCalculatorsByCategory } from "@/data/calculators";
 import { Card } from "@/components/ui/card";
 
+type PageParams = Promise<{ slug: string }>;
+
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const category = categories.find((c) => c.slug === params.slug);
+export async function generateMetadata({ params }: { params: PageParams }): Promise<Metadata> {
+  const { slug } = await params;
+  const category = categories.find((c) => c.slug === slug);
   if (!category) return {};
   return {
     title: `${category.title} Calculators`,
@@ -18,8 +21,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function CategoryPage({ params }: { params: { slug: string } }) {
-  const category = categories.find((c) => c.slug === params.slug);
+export default async function CategoryPage({ params }: { params: PageParams }) {
+  const { slug } = await params;
+  const category = categories.find((c) => c.slug === slug);
   if (!category) return notFound();
 
   const calcs = getCalculatorsByCategory(category.slug);

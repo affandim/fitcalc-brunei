@@ -7,12 +7,15 @@ import { articleContentRegistry } from "@/data/article-content-registry";
 import { InArticleAd } from "@/components/ads/ad-slots";
 import { calculators } from "@/data/calculators";
 
+type PageParams = Promise<{ slug: string }>;
+
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const article = articles.find((a) => a.slug === params.slug);
+export async function generateMetadata({ params }: { params: PageParams }): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles.find((a) => a.slug === slug);
   if (!article) return {};
   return {
     title: article.title,
@@ -21,8 +24,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = articles.find((a) => a.slug === params.slug);
+export default async function ArticlePage({ params }: { params: PageParams }) {
+  const { slug } = await params;
+  const article = articles.find((a) => a.slug === slug);
   if (!article) return notFound();
 
   const Content = articleContentRegistry[article.slug];
