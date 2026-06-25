@@ -3,7 +3,7 @@ import { CalculatorsDirectory } from "@/components/calculators/calculators-direc
 
 export const metadata: Metadata = {
   title: "All Calculators",
-  description: "Browse every health, fitness, nutrition and finance calculator on FitCalc Brunei.",
+  description: "Browse every health, fitness, nutrition and finance calculator on Calckoo.",
 };
 
 export default function CalculatorsIndexPage() {

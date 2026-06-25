@@ -1,5 +1,5 @@
 /**
- * FitCalc Brunei — Finance Calculation Engine
+ * Calckoo — Finance Calculation Engine
  * Pure functions, same pattern as lib/formulas.ts. Kept in a separate file
  * since finance math is a distinct domain from health math.
  */

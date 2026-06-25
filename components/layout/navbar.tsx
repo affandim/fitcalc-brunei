@@ -36,7 +36,7 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="group flex shrink-0 flex-col">
           <span className="font-display text-lg font-medium tracking-tight">
-            FitCalc<span className="text-emerald"> Brunei</span>
+            Calc<span className="text-emerald">koo</span>
           </span>
           <span className="vital-tape mt-0.5 w-full origin-left scale-x-100 transition-transform duration-300 group-hover:scale-x-105" />
         </Link>

@@ -1,5 +1,5 @@
 /**
- * FitCalc Brunei — Calculation Engine
+ * Calckoo — Calculation Engine
  * Pure, dependency-free formula functions. Every calculator imports from
  * here so the math lives in exactly one place and is unit-testable in
  * isolation from any UI.

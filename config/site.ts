@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "FitCalc Brunei",
+  name: "Calckoo",
   tagline: "Health calculators you can trust",
   description:
     "Free, accurate health, fitness and nutrition calculators for Brunei and Southeast Asia — BMI, calories, body fat, TDEE, pregnancy and more.",
@@ -11,9 +11,9 @@ export const siteConfig = {
     { code: "id", label: "Bahasa Indonesia", default: false },
   ],
   links: {
-    twitter: "https://twitter.com/fitcalcbrunei",
-    facebook: "https://facebook.com/fitcalcbrunei",
-    instagram: "https://instagram.com/fitcalcbrunei",
+    twitter: "https://twitter.com/calckoo",
+    facebook: "https://facebook.com/calckoo",
+    instagram: "https://instagram.com/calckoo",
   },
   nav: [
     { key: "health", href: "/category/health" },

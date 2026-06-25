@@ -156,15 +156,15 @@ export const dictionary: Record<Locale, Dictionary> = {
       title: "Frequently asked questions",
       items: [
         {
-          q: "Are FitCalc Brunei's calculators medically accurate?",
+          q: "Are Calckoo's calculators medically accurate?",
           a: "Every calculator is built on peer-reviewed formulas (e.g. Mifflin-St Jeor for BMR, WHO standards for BMI). Results are estimates intended for general guidance, not a substitute for professional medical advice.",
         },
         {
-          q: "Is FitCalc Brunei free to use?",
+          q: "Is Calckoo free to use?",
           a: "Yes. All calculators, articles and conversion tools are free, with no account required. The site is supported by non-intrusive advertising.",
         },
         {
-          q: "Can I use FitCalc Brunei in Bahasa Melayu?",
+          q: "Can I use Calckoo in Bahasa Melayu?",
           a: "Yes — the site supports English, Bahasa Melayu Brunei and Bahasa Indonesia. Switch languages from the header at any time.",
         },
         {
@@ -258,15 +258,15 @@ export const dictionary: Record<Locale, Dictionary> = {
       title: "Soalan lazim",
       items: [
         {
-          q: "Adakah kalkulator FitCalc Brunei tepat dari segi perubatan?",
+          q: "Adakah kalkulator Calckoo tepat dari segi perubatan?",
           a: "Setiap kalkulator dibina berdasarkan formula yang disemak rakan setara (contohnya Mifflin-St Jeor untuk BMR, piawaian WHO untuk BMI). Keputusan adalah anggaran untuk panduan umum, bukan pengganti nasihat perubatan profesional.",
         },
         {
-          q: "Adakah FitCalc Brunei percuma digunakan?",
+          q: "Adakah Calckoo percuma digunakan?",
           a: "Ya. Semua kalkulator, artikel dan alat penukaran adalah percuma, tanpa perlu akaun. Laman ini disokong oleh pengiklanan yang tidak mengganggu.",
         },
         {
-          q: "Bolehkah saya guna FitCalc Brunei dalam Bahasa Melayu?",
+          q: "Bolehkah saya guna Calckoo dalam Bahasa Melayu?",
           a: "Ya — laman ini menyokong Bahasa Inggeris, Bahasa Melayu Brunei dan Bahasa Indonesia. Tukar bahasa dari header pada bila-bila masa.",
         },
         {
@@ -360,15 +360,15 @@ export const dictionary: Record<Locale, Dictionary> = {
       title: "Pertanyaan yang sering diajukan",
       items: [
         {
-          q: "Apakah kalkulator FitCalc Brunei akurat secara medis?",
+          q: "Apakah kalkulator Calckoo akurat secara medis?",
           a: "Setiap kalkulator dibangun berdasarkan formula yang telah ditinjau sejawat (misalnya Mifflin-St Jeor untuk BMR, standar WHO untuk BMI). Hasilnya adalah perkiraan untuk panduan umum, bukan pengganti nasihat medis profesional.",
         },
         {
-          q: "Apakah FitCalc Brunei gratis digunakan?",
+          q: "Apakah Calckoo gratis digunakan?",
           a: "Ya. Semua kalkulator, artikel, dan alat konversi gratis digunakan, tanpa perlu akun. Situs ini didukung oleh iklan yang tidak mengganggu.",
         },
         {
-          q: "Bisakah saya menggunakan FitCalc Brunei dalam Bahasa Indonesia?",
+          q: "Bisakah saya menggunakan Calckoo dalam Bahasa Indonesia?",
           a: "Ya — situs ini mendukung Bahasa Inggris, Bahasa Melayu Brunei, dan Bahasa Indonesia. Ganti bahasa dari header kapan saja.",
         },
         {

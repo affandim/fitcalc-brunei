@@ -1,6 +1,6 @@
 {
-  "name": "FitCalc Brunei",
-  "short_name": "FitCalc",
+  "name": "Calckoo",
+  "short_name": "Calckoo",
   "description": "Free health, fitness and nutrition calculators for Brunei and Southeast Asia.",
   "start_url": "/",
   "display": "standalone",

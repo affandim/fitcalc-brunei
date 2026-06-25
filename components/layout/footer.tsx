@@ -15,7 +15,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <span className="font-display text-xl">
-              FitCalc<span className="text-mint"> Brunei</span>
+              Calc<span className="text-mint">koo</span>
             </span>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-sand/70">
               {siteConfig.description}
@@ -69,7 +69,7 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-sand/10 pt-6 text-xs text-sand/50 sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} FitCalc Brunei. {t.footer.copyright}</p>
+          <p>© {new Date().getFullYear()} Calckoo. {t.footer.copyright}</p>
           <p>{t.footer.builtFor}</p>
         </div>
       </div>

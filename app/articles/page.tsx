@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Articles",
-  description: "In-depth, plain-language guides behind every FitCalc Brunei calculator.",
+  description: "In-depth, plain-language guides behind every Calckoo calculator.",
 };
 
 export default function ArticlesPage() {
