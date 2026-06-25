@@ -78,7 +78,21 @@ npm run start
 
 `next-sitemap` regenerates `public/sitemap.xml` and `public/robots.txt` automatically after every build — update `siteUrl` in `next-sitemap.config.js` and `config/site.ts` once you have a real domain.
 
-## Next steps (Milestone 4)
+## Milestone 4 — Finance calculators (done)
+
+Five finance calculators added, using the same reusable pattern and a dedicated finance
+calculation engine (`lib/finance-formulas.ts`, tested in `lib/finance-formulas.test.ts` — 8
+passing tests):
+
+| Calculator | What it does |
+|---|---|
+| Loan EMI | Monthly payment, total interest, principal/interest breakdown |
+| Compound Interest | Future value projection with monthly contributions + growth chart |
+| Simple Interest | Basic interest on a principal over time |
+| Savings Goal | Solves for the monthly contribution needed to hit a target |
+| Investment Return | Total return and annualized (CAGR) return |
+
+## Next steps (Milestone 5)
 
 Build out remaining content depth: 500+ SEO articles, finance calculators (100+), unit
 converters (50+), multi-language content (Bahasa Melayu Brunei / Bahasa Indonesia translations),

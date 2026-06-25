@@ -21,6 +21,11 @@ export const calculators: CalculatorMeta[] = [
   { slug: "pace-calculator", title: "Pace Calculator", shortDescription: "Running and walking pace conversions.", category: "fitness", icon: "Timer", isNew: true },
   { slug: "running-calculator", title: "Running Calculator", shortDescription: "Estimate finish times and splits.", category: "fitness", icon: "Timer" },
   { slug: "walking-calories-calculator", title: "Walking Calories Calculator", shortDescription: "Calories burned while walking.", category: "fitness", icon: "Flame", isNew: true },
+  { slug: "loan-emi-calculator", title: "Loan EMI Calculator", shortDescription: "Monthly loan payments and total interest.", category: "finance", icon: "Wallet", popular: true },
+  { slug: "compound-interest-calculator", title: "Compound Interest Calculator", shortDescription: "Grow savings with compounding and contributions.", category: "finance", icon: "TrendingUp", popular: true },
+  { slug: "simple-interest-calculator", title: "Simple Interest Calculator", shortDescription: "Quick simple interest on a principal amount.", category: "finance", icon: "Percent" },
+  { slug: "savings-goal-calculator", title: "Savings Goal Calculator", shortDescription: "Monthly savings needed to hit a target.", category: "finance", icon: "PiggyBank" },
+  { slug: "investment-return-calculator", title: "Investment Return Calculator", shortDescription: "Total and annualized investment returns.", category: "finance", icon: "LineChart" },
 ];
 
 export function getCalculatorsByCategory(category: string) {
