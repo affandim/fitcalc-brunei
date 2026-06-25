@@ -31,4 +31,34 @@ export const articles: ArticleMeta[] = [
     readingMinutes: 6,
     publishedAt: "2026-02-18",
   },
+  {
+    slug: "how-much-protein-do-you-really-need",
+    title: "How Much Protein Do You Really Need? A Practical Breakdown",
+    excerpt:
+      "The official guideline and the number that's actually useful for active people aren't the same thing.",
+    category: "nutrition",
+    relatedCalculator: "protein-calculator",
+    readingMinutes: 7,
+    publishedAt: "2026-03-04",
+  },
+  {
+    slug: "waist-to-height-vs-bmi-which-is-better",
+    title: "Waist-to-Height Ratio vs BMI: Which One Should You Trust?",
+    excerpt:
+      "Two simple screening tools, two different blind spots. Here's how they compare.",
+    category: "health",
+    relatedCalculator: "waist-to-height-ratio-calculator",
+    readingMinutes: 6,
+    publishedAt: "2026-03-19",
+  },
+  {
+    slug: "beginners-guide-to-calorie-deficits",
+    title: "A Beginner's Guide to Calorie Deficits That Actually Work",
+    excerpt:
+      "The math is simple. Sticking to it for long enough is the actual challenge — here's how to make it easier.",
+    category: "nutrition",
+    relatedCalculator: "calories-calculator",
+    readingMinutes: 9,
+    publishedAt: "2026-04-02",
+  },
 ];

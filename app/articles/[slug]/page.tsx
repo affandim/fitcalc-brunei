@@ -1,7 +1,11 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ChevronRight, Clock } from "lucide-react";
 import { articles } from "@/data/articles";
+import { articleContentRegistry } from "@/data/article-content-registry";
 import { InArticleAd } from "@/components/ads/ad-slots";
+import { calculators } from "@/data/calculators";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -13,6 +17,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: article.title,
     description: article.excerpt,
+    alternates: { canonical: `/articles/${article.slug}` },
   };
 }
 
@@ -20,16 +25,54 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   const article = articles.find((a) => a.slug === params.slug);
   if (!article) return notFound();
 
+  const Content = articleContentRegistry[article.slug];
+  const relatedCalculator = article.relatedCalculator
+    ? calculators.find((c) => c.slug === article.relatedCalculator)
+    : undefined;
+
   return (
-    <article className="mx-auto max-w-2xl px-4 py-20 sm:px-6 lg:px-8">
-      <span className="text-xs font-medium uppercase tracking-wide text-emerald">{article.category}</span>
+    <article className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-foreground/50">
+        <Link href="/" className="hover:text-emerald">Home</Link>
+        <ChevronRight size={12} />
+        <Link href="/articles" className="hover:text-emerald">Articles</Link>
+        <ChevronRight size={12} />
+        <span className="text-foreground/70 capitalize">{article.category}</span>
+      </nav>
+
+      <span className="mt-4 inline-block text-xs font-medium uppercase tracking-wide text-emerald">
+        {article.category}
+      </span>
       <h1 className="font-display mt-2 text-3xl font-medium sm:text-4xl">{article.title}</h1>
       <p className="mt-3 text-foreground/60">{article.excerpt}</p>
+      <span className="mt-3 flex items-center gap-1.5 text-xs text-foreground/45">
+        <Clock size={12} /> {article.readingMinutes} min read
+      </span>
 
-      <InArticleAd />
+      {relatedCalculator && (
+        <Link
+          href={`/calculators/${relatedCalculator.slug}`}
+          className="mt-6 flex items-center justify-between rounded-card border border-border bg-surface-muted/50 p-4 text-sm transition-colors hover:border-emerald"
+        >
+          <span>
+            Try the <strong className="text-foreground">{relatedCalculator.title}</strong>
+          </span>
+          <ChevronRight size={16} className="text-emerald" />
+        </Link>
+      )}
 
-      <div className="mt-8 rounded-card border border-dashed border-border bg-surface-muted/50 p-10 text-center text-sm text-foreground/50">
-        The full 1,500–2,500 word article ships alongside its calculator in Milestone 2.
+      <div className="mt-10">
+        <InArticleAd />
+      </div>
+
+      <div className="mt-10">
+        {Content ? (
+          <Content />
+        ) : (
+          <div className="rounded-card border border-dashed border-border bg-surface-muted/50 p-10 text-center text-sm text-foreground/50">
+            The full article for this topic is coming soon.
+          </div>
+        )}
       </div>
     </article>
   );

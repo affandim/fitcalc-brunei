@@ -92,6 +92,28 @@ passing tests):
 | Savings Goal | Solves for the monthly contribution needed to hit a target |
 | Investment Return | Total return and annualized (CAGR) return |
 
+## Fixes
+
+- **Header navigation** now highlights the active section (Health/Fitness/Nutrition/Finance/
+  Converters/Articles) based on the current path, both desktop and mobile menus.
+
+## Articles — full content (6 of many planned)
+
+`/articles` now serves complete, original long-form pieces (not calculator-page articles —
+these are standalone, broader-angle pieces that link back to relevant calculators):
+
+- Understanding Your BMI Result
+- TDEE vs BMR: What's the Difference
+- How to Find Your Heart Rate Zones
+- How Much Protein Do You Really Need
+- Waist-to-Height Ratio vs BMI
+- A Beginner's Guide to Calorie Deficits
+
+Article bodies live in `components/articles/article-content-*.tsx`, mapped to slugs via
+`data/article-content-registry.tsx`. Any article slug without a registry entry falls back to a
+"coming soon" placeholder rather than breaking the build — so new articles can be added
+incrementally.
+
 ## Next steps (Milestone 5)
 
 Build out remaining content depth: 500+ SEO articles, finance calculators (100+), unit
