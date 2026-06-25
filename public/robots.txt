@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /admin
+Disallow: /api
+
+# Host
+Host: https://fitcalcbrunei.com
+
+# Sitemaps
+Sitemap: https://fitcalcbrunei.com/sitemap.xml

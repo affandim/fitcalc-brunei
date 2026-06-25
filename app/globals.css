@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/* ============================================================
+   FitCalc Brunei — Design Tokens
+   Signature motif: the "Vital Tape" — a measurement-tape ribbon
+   with tick marks, echoing the act of measuring (BMI, body fat,
+   waist-hip) that sits at the heart of every calculator here.
+   ============================================================ */
+
+:root {
+  /* --- Core palette --- */
+  --sand: #f7f5f0;        /* warm sand — light surface */
+  --sand-deep: #efebe2;   /* secondary light surface */
+  --ink: #0b1220;         /* deep slate ink — text / dark surface */
+  --ink-soft: #2a3344;    /* secondary ink */
+  --emerald-deep: #0f3d2e;/* primary deep emerald */
+  --emerald: #10b981;     /* primary bright emerald */
+  --mint: #6ee7b7;        /* glow accent */
+  --teal: #14b8a6;        /* secondary accent */
+  --line: rgba(11, 18, 32, 0.1);
+  --line-dark: rgba(247, 245, 240, 0.12);
+
+  --background: var(--sand);
+  --foreground: var(--ink);
+  --surface: #ffffff;
+  --surface-muted: var(--sand-deep);
+  --border: var(--line);
+
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+}
+
+.dark {
+  --background: var(--ink);
+  --foreground: var(--sand);
+  --surface: #111a2c;
+  --surface-muted: #16213a;
+  --border: var(--line-dark);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+
+  --color-sand: var(--sand);
+  --color-sand-deep: var(--sand-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-emerald-deep: var(--emerald-deep);
+  --color-emerald: var(--emerald);
+  --color-mint: var(--mint);
+  --color-teal: var(--teal);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
+
+  --radius-card: 1.25rem;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ---------- Vital Tape motif ---------- */
+
+.vital-tape {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--foreground) 0,
+    var(--foreground) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+  opacity: 0.18;
+}
+
+.vital-tape::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--emerald) 0,
+    var(--emerald) 1px,
+    transparent 1px,
+    transparent 60px
+  );
+  opacity: 0.9;
+}
+
+.vital-tape-draw {
+  animation: tape-draw 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: left center;
+}
+
+@keyframes tape-draw {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vital-tape-draw {
+    animation: none;
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* ---------- Utility: balanced text wrap ---------- */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ---------- Focus visibility (accessibility floor) ---------- */
+:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
