@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "Health calculators you can trust",
   description:
     "Free, accurate health, fitness and nutrition calculators for Brunei and Southeast Asia — BMI, calories, body fat, TDEE, pregnancy and more.",
-  url: "https://fitcalcbrunei.com",
+  url: "https://calckoo.com",
   ogImage: "/og-image.png",
   locales: [
     { code: "en", label: "English", default: true },

@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://fitcalcbrunei.com",
+  siteUrl: process.env.SITE_URL || "https://calckoo.com",
   generateRobotsTxt: true,
   generateIndexSitemap: true,
   sitemapSize: 7000,

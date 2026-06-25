@@ -13,8 +13,8 @@ export default function ContactPage() {
       <p className="mt-6 text-foreground/70 leading-relaxed">
         Spotted an incorrect formula, have a calculator request, or want to partner with us?
         Reach out at{" "}
-        <a href="mailto:hello@fitcalcbrunei.com" className="text-emerald underline-offset-4 hover:underline">
-          hello@fitcalcbrunei.com
+        <a href="mailto:hello@calckoo.com" className="text-emerald underline-offset-4 hover:underline">
+          hello@calckoo.com
         </a>
         .
       </p>
