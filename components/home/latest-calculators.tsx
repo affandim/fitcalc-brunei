@@ -1,14 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import * as Icons from "lucide-react";
 import { getLatestCalculators } from "@/data/calculators";
+import { useLocale } from "@/lib/i18n/locale-provider";
+import { localizedCalculatorTitle } from "@/lib/i18n/localize";
 
 export function LatestCalculators() {
   const latest = getLatestCalculators();
+  const { t, locale } = useLocale();
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      <p className="text-sm font-medium uppercase tracking-wide text-emerald">Just added</p>
-      <h2 className="font-display mt-2 text-2xl font-medium sm:text-3xl">Latest calculators</h2>
+      <p className="text-sm font-medium uppercase tracking-wide text-emerald">{t.latest.eyebrow}</p>
+      <h2 className="font-display mt-2 text-2xl font-medium sm:text-3xl">{t.latest.title}</h2>
 
       <div className="mt-8 flex gap-4 overflow-x-auto pb-2">
         {latest.map((calc) => {
@@ -24,8 +29,8 @@ export function LatestCalculators() {
                 <Icon size={18} />
               </div>
               <div>
-                <p className="text-sm font-medium leading-snug">{calc.title}</p>
-                <span className="text-xs text-emerald">New</span>
+                <p className="text-sm font-medium leading-snug">{localizedCalculatorTitle(calc, locale)}</p>
+                <span className="text-xs text-emerald">{t.latest.newBadge}</span>
               </div>
             </Link>
           );

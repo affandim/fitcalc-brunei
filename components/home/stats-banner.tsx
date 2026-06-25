@@ -1,11 +1,17 @@
-const stats = [
-  { value: "2.4M+", label: "Calculations performed" },
-  { value: "150+", label: "Calculators live" },
-  { value: "9", label: "Health categories" },
-  { value: "3", label: "Languages" },
-];
+"use client";
+
+import { useLocale } from "@/lib/i18n/locale-provider";
 
 export function StatsBanner() {
+  const { t } = useLocale();
+
+  const stats = [
+    { value: "2.4M+", label: t.stats.calculationsPerformed },
+    { value: "150+", label: t.stats.calculatorsLive },
+    { value: "9", label: t.stats.healthCategories },
+    { value: "3", label: t.stats.languages },
+  ];
+
   return (
     <section className="relative overflow-hidden bg-emerald-deep py-16 text-sand">
       <div className="vital-tape opacity-25" />

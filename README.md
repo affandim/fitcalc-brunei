@@ -119,8 +119,54 @@ Article bodies live in `components/articles/article-content-*.tsx`, mapped to sl
 "coming soon" placeholder rather than breaking the build — so new articles can be added
 incrementally.
 
-## Next steps (Milestone 5)
+## Multi-language (i18n) — UI chrome (done)
 
-Build out remaining content depth: 500+ SEO articles, finance calculators (100+), unit
-converters (50+), multi-language content (Bahasa Melayu Brunei / Bahasa Indonesia translations),
-real PWA icons, and og-image.png.
+The language switcher in the header is now functionally real, not cosmetic. Selecting English /
+Bahasa Melayu Brunei / Bahasa Indonesia immediately re-renders the site-wide chrome in that
+language and persists the choice (`localStorage`) across navigation:
+
+- Header nav, search placeholder
+- Hero section
+- Homepage section headers (Popular, Categories, Articles, Latest, Stats)
+- FAQ section (questions + answers)
+- Newsletter section
+- Footer (column headers, links, copyright line)
+
+Implementation: `lib/i18n/dictionary.ts` (translation strings for all three locales) +
+`lib/i18n/locale-provider.tsx` (React context, `useLocale()` hook, localStorage persistence).
+Components needing translated text are client components calling `useLocale()` and reading
+`t.<section>.<key>`.
+
+**Scope note:** calculator forms (labels like "Height", "Weight", "Calculate") and the 6 full
+article bodies remain English-only. Translating all 25 calculators and growing article set into
+3 languages is a substantially larger follow-up — this milestone makes the switcher real and
+covers everything site-wide outside individual calculator/article content.
+
+## Multi-language support (3 of 3 active)
+
+Real, working language switching — not cosmetic — across:
+
+- **Site chrome**: nav, footer, hero, search placeholder/results, FAQ, newsletter, stats
+  (already wired before this pass, via `lib/i18n/dictionary.ts` + `lib/i18n/locale-provider.tsx`)
+- **Calculator & category directory data**: all 25 calculator titles/descriptions and all 9
+  category titles/descriptions now have `ms-bn`/`id` translations in `data/calculators.ts` and
+  `data/categories.ts`, resolved via `lib/i18n/localize.ts` with English fallback
+- **Calculator pages**: breadcrumb, category badge, H1 title, description, "Related
+  calculators" and "Frequently asked questions" headings all localize via `CalculatorShell`
+- **`/calculators` directory and `/category/[slug]` pages**: fully localized (split into
+  client components — `CalculatorsDirectory` and `CategoryPageContent` — since their parent
+  `page.tsx` files stay server components for `generateMetadata`/`generateStaticParams`)
+
+**Still English-only by design** (documented as a known, deliberate scope boundary): the long-
+form calculator articles, calculator FAQ question/answer content, and the 6 standalone
+`/articles` pieces. Translating ~25 articles' worth of nuanced prose accurately is a
+substantially larger effort than translating UI strings and short titles, and is the natural
+next phase rather than something to rush.
+
+Language preference persists via `localStorage` (`fitcalc-locale` key) and applies instantly
+across the whole site without a page reload.
+
+## Next steps (Milestone 6)
+
+Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
+versions of the long-form articles/FAQs, real PWA icons, and og-image.png.

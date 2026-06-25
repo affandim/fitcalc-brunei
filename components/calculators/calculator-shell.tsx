@@ -3,7 +3,14 @@
 import Link from "next/link";
 import { ChevronRight, Printer, Share2 } from "lucide-react";
 import { calculators } from "@/data/calculators";
+import { categories } from "@/data/categories";
 import { siteConfig } from "@/config/site";
+import { useLocale } from "@/lib/i18n/locale-provider";
+import {
+  localizedCalculatorTitle,
+  localizedCalculatorDescription,
+  localizedCategoryTitle,
+} from "@/lib/i18n/localize";
 import type { CalculatorMeta } from "@/types";
 
 interface FaqItem {
@@ -14,14 +21,19 @@ interface FaqItem {
 interface CalculatorShellProps {
   calculator: CalculatorMeta;
   children: React.ReactNode; // the calculator form + result
-  article: React.ReactNode; // long-form SEO article
-  faqs: FaqItem[];
+  article: React.ReactNode; // long-form SEO article (English-only for now)
+  faqs: FaqItem[]; // FAQ content (English-only for now)
 }
 
 export function CalculatorShell({ calculator, children, article, faqs }: CalculatorShellProps) {
+  const { t, locale } = useLocale();
   const related = calculators
     .filter((c) => c.category === calculator.category && c.slug !== calculator.slug)
     .slice(0, 3);
+  const category = categories.find((c) => c.slug === calculator.category);
+  const categoryLabel = category ? localizedCategoryTitle(category, locale) : calculator.category;
+  const title = localizedCalculatorTitle(calculator, locale);
+  const description = localizedCalculatorDescription(calculator, locale);
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -61,7 +73,7 @@ export function CalculatorShell({ calculator, children, article, faqs }: Calcula
     const url = window.location.href;
     if (navigator.share) {
       try {
-        await navigator.share({ title: calculator.title, url });
+        await navigator.share({ title, url });
         return;
       } catch {
         // user cancelled share — fall through to clipboard
@@ -83,25 +95,25 @@ export function CalculatorShell({ calculator, children, article, faqs }: Calcula
 
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-foreground/50">
-        <Link href="/" className="hover:text-emerald">Home</Link>
+        <Link href="/" className="hover:text-emerald">{t.calculator.home}</Link>
         <ChevronRight size={12} />
-        <Link href={`/category/${calculator.category}`} className="capitalize hover:text-emerald">
-          {calculator.category}
+        <Link href={`/category/${calculator.category}`} className="hover:text-emerald">
+          {categoryLabel}
         </Link>
         <ChevronRight size={12} />
-        <span className="text-foreground/70">{calculator.title}</span>
+        <span className="text-foreground/70">{title}</span>
       </nav>
 
       {/* Header */}
       <div className="mt-4 flex flex-wrap items-start justify-between gap-4">
         <div>
           <span className="text-xs font-medium uppercase tracking-wide text-emerald">
-            {calculator.category}
+            {categoryLabel}
           </span>
           <h1 className="font-display mt-1 text-3xl font-medium sm:text-4xl">
-            {calculator.title}
+            {title}
           </h1>
-          <p className="mt-2 text-foreground/60">{calculator.shortDescription}</p>
+          <p className="mt-2 text-foreground/60">{description}</p>
         </div>
         <div className="flex gap-2">
           <button
@@ -131,7 +143,7 @@ export function CalculatorShell({ calculator, children, article, faqs }: Calcula
 
       {/* FAQ */}
       <div className="mt-16 border-t border-border pt-12">
-        <h2 className="font-display text-2xl font-medium">Frequently asked questions</h2>
+        <h2 className="font-display text-2xl font-medium">{t.calculator.faqTitle}</h2>
         <div className="mt-6 space-y-6">
           {faqs.map((f) => (
             <div key={f.question}>
@@ -145,7 +157,7 @@ export function CalculatorShell({ calculator, children, article, faqs }: Calcula
       {/* Related calculators */}
       {related.length > 0 && (
         <div className="mt-16 border-t border-border pt-12">
-          <h2 className="font-display text-2xl font-medium">Related calculators</h2>
+          <h2 className="font-display text-2xl font-medium">{t.calculator.relatedCalculators}</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             {related.map((r) => (
               <Link
@@ -153,8 +165,8 @@ export function CalculatorShell({ calculator, children, article, faqs }: Calcula
                 href={`/calculators/${r.slug}`}
                 className="rounded-card border border-border p-4 text-sm transition-colors hover:border-emerald"
               >
-                <p className="font-medium">{r.title}</p>
-                <p className="mt-1 text-foreground/55">{r.shortDescription}</p>
+                <p className="font-medium">{localizedCalculatorTitle(r, locale)}</p>
+                <p className="mt-1 text-foreground/55">{localizedCalculatorDescription(r, locale)}</p>
               </Link>
             ))}
           </div>

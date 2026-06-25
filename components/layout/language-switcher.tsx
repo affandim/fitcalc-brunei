@@ -2,17 +2,27 @@
 
 import * as React from "react";
 import { Languages } from "lucide-react";
-import { siteConfig } from "@/config/site";
+import { locales } from "@/lib/i18n/dictionary";
+import { useLocale } from "@/lib/i18n/locale-provider";
 import { cn } from "@/lib/utils";
 
 export function LanguageSwitcher({ className }: { className?: string }) {
   const [open, setOpen] = React.useState(false);
-  const [active, setActive] = React.useState<string>(
-    siteConfig.locales.find((l) => l.default)?.code ?? "en"
-  );
+  const { locale, setLocale } = useLocale();
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
 
   return (
-    <div className={cn("relative", className)}>
+    <div ref={containerRef} className={cn("relative", className)}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -21,7 +31,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         className="inline-flex h-9 items-center gap-1.5 rounded-full border border-border px-3 text-sm text-foreground/70 transition-colors hover:text-foreground hover:border-emerald"
       >
         <Languages size={15} />
-        <span className="uppercase tracking-wide">{active}</span>
+        <span className="uppercase tracking-wide">{locale}</span>
       </button>
 
       {open && (
@@ -29,22 +39,22 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           role="listbox"
           className="absolute right-0 z-50 mt-2 w-48 overflow-hidden rounded-xl border border-border bg-surface py-1 shadow-lg"
         >
-          {siteConfig.locales.map((locale) => (
-            <li key={locale.code}>
+          {locales.map((l) => (
+            <li key={l.code}>
               <button
                 type="button"
                 role="option"
-                aria-selected={active === locale.code}
+                aria-selected={locale === l.code}
                 onClick={() => {
-                  setActive(locale.code);
+                  setLocale(l.code);
                   setOpen(false);
                 }}
                 className={cn(
                   "flex w-full items-center justify-between px-3 py-2 text-left text-sm transition-colors hover:bg-surface-muted",
-                  active === locale.code && "text-emerald font-medium"
+                  locale === l.code && "text-emerald font-medium"
                 )}
               >
-                {locale.label}
+                {l.label}
               </button>
             </li>
           ))}

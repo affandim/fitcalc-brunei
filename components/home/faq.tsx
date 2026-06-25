@@ -3,40 +3,23 @@
 import * as React from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const faqs = [
-  {
-    q: "Are FitCalc Brunei's calculators medically accurate?",
-    a: "Every calculator is built on peer-reviewed formulas (e.g. Mifflin-St Jeor for BMR, WHO standards for BMI). Results are estimates intended for general guidance, not a substitute for professional medical advice.",
-  },
-  {
-    q: "Is FitCalc Brunei free to use?",
-    a: "Yes. All calculators, articles and conversion tools are free, with no account required. The site is supported by non-intrusive advertising.",
-  },
-  {
-    q: "Can I use FitCalc Brunei in Bahasa Melayu?",
-    a: "Yes — the site supports English, Bahasa Melayu Brunei and Bahasa Indonesia. Switch languages from the header at any time.",
-  },
-  {
-    q: "How often are new calculators added?",
-    a: "New calculators and articles are published weekly as the platform grows toward 150+ health, fitness, nutrition and finance tools.",
-  },
-];
+import { useLocale } from "@/lib/i18n/locale-provider";
 
 export function Faq() {
+  const { t } = useLocale();
   const [openIndex, setOpenIndex] = React.useState<number | null>(0);
 
   return (
     <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
       <p className="text-center text-sm font-medium uppercase tracking-wide text-emerald">
-        Good to know
+        {t.faq.eyebrow}
       </p>
       <h2 className="font-display mt-2 text-center text-2xl font-medium sm:text-3xl">
-        Frequently asked questions
+        {t.faq.title}
       </h2>
 
       <div className="mt-8 divide-y divide-border rounded-card border border-border bg-surface">
-        {faqs.map((item, i) => {
+        {t.faq.items.map((item, i) => {
           const open = openIndex === i;
           return (
             <div key={item.q}>

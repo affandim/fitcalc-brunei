@@ -4,6 +4,9 @@ import * as React from "react";
 import Link from "next/link";
 import { Search, X } from "lucide-react";
 import { calculators } from "@/data/calculators";
+import { categories } from "@/data/categories";
+import { useLocale } from "@/lib/i18n/locale-provider";
+import { localizedCalculatorTitle, localizedCalculatorDescription, localizedCategoryTitle } from "@/lib/i18n/localize";
 import { cn } from "@/lib/utils";
 
 interface SearchBarProps {
@@ -17,9 +20,10 @@ interface SearchBarProps {
 export function SearchBar({
   className,
   size = "md",
-  placeholder = "Search 150+ calculators…",
+  placeholder,
   onNavigate,
 }: SearchBarProps) {
+  const { t, locale } = useLocale();
   const [query, setQuery] = React.useState("");
   const [focused, setFocused] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -28,14 +32,19 @@ export function SearchBar({
     if (!query.trim()) return [];
     const q = query.toLowerCase();
     return calculators
-      .filter(
-        (c) =>
+      .filter((c) => {
+        const title = localizedCalculatorTitle(c, locale).toLowerCase();
+        const desc = localizedCalculatorDescription(c, locale).toLowerCase();
+        return (
+          title.includes(q) ||
+          desc.includes(q) ||
           c.title.toLowerCase().includes(q) ||
           c.shortDescription.toLowerCase().includes(q) ||
           c.category.includes(q)
-      )
+        );
+      })
       .slice(0, 6);
-  }, [query]);
+  }, [query, locale]);
 
   React.useEffect(() => {
     function onClickOutside(e: MouseEvent) {
@@ -63,7 +72,7 @@ export function SearchBar({
           value={query}
           onFocus={() => setFocused(true)}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder={placeholder}
+          placeholder={placeholder ?? t.search.placeholder}
           aria-label="Search calculators"
           className={cn(
             "w-full bg-transparent outline-none placeholder:text-foreground/40",
@@ -86,7 +95,7 @@ export function SearchBar({
         <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl border border-border bg-surface shadow-xl">
           {results.length === 0 ? (
             <p className="px-4 py-4 text-sm text-foreground/50">
-              No calculators match &ldquo;{query}&rdquo; yet.
+              {t.search.noResults.replace("{query}", query)}
             </p>
           ) : (
             <ul role="listbox" className="max-h-80 overflow-y-auto py-1">
@@ -102,13 +111,16 @@ export function SearchBar({
                     className="flex items-center justify-between gap-3 px-4 py-3 transition-colors hover:bg-surface-muted"
                   >
                     <span>
-                      <span className="block text-sm font-medium">{c.title}</span>
+                      <span className="block text-sm font-medium">{localizedCalculatorTitle(c, locale)}</span>
                       <span className="block text-xs text-foreground/50">
-                        {c.shortDescription}
+                        {localizedCalculatorDescription(c, locale)}
                       </span>
                     </span>
                     <span className="shrink-0 rounded-full bg-emerald/10 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-emerald">
-                      {c.category}
+                      {(() => {
+                        const cat = categories.find((cat) => cat.slug === c.category);
+                        return cat ? localizedCategoryTitle(cat, locale) : c.category;
+                      })()}
                     </span>
                   </Link>
                 </li>

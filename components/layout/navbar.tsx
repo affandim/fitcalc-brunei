@@ -8,12 +8,14 @@ import { siteConfig } from "@/config/site";
 import { SearchBar } from "@/components/home/search-bar";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { useLocale } from "@/lib/i18n/locale-provider";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const pathname = usePathname();
+  const { t } = useLocale();
 
   React.useEffect(() => {
     function onScroll() {
@@ -52,7 +54,7 @@ export function Navbar() {
                   isActive ? "bg-surface-muted font-medium text-emerald" : "text-foreground/70"
                 )}
               >
-                {item.label}
+                {t.nav[item.key]}
               </Link>
             );
           })}
@@ -95,7 +97,7 @@ export function Navbar() {
                     isActive ? "font-medium text-emerald" : "text-foreground/80"
                   )}
                 >
-                  {item.label}
+                  {t.nav[item.key]}
                 </Link>
               );
             })}

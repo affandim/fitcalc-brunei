@@ -1,25 +1,30 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { articles } from "@/data/articles";
 import { Card } from "@/components/ui/card";
+import { useLocale } from "@/lib/i18n/locale-provider";
 
 export function FeaturedArticles() {
+  const { t } = useLocale();
+
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="flex items-end justify-between gap-4">
         <div>
           <p className="text-sm font-medium uppercase tracking-wide text-emerald">
-            From the journal
+            {t.articlesSection.eyebrow}
           </p>
           <h2 className="font-display mt-2 text-2xl font-medium sm:text-3xl">
-            Featured articles
+            {t.articlesSection.title}
           </h2>
         </div>
         <Link
           href="/articles"
           className="hidden shrink-0 items-center gap-1 text-sm font-medium text-foreground/60 hover:text-emerald sm:flex"
         >
-          All articles <ArrowUpRight size={14} />
+          {t.articlesSection.viewAll} <ArrowUpRight size={14} />
         </Link>
       </div>
 
@@ -33,7 +38,7 @@ export function FeaturedArticles() {
               <h3 className="font-display mt-3 text-lg leading-snug">{article.title}</h3>
               <p className="mt-2 text-sm text-foreground/55">{article.excerpt}</p>
               <span className="mt-4 flex items-center gap-1.5 text-xs text-foreground/45">
-                <Clock size={12} /> {article.readingMinutes} min read
+                <Clock size={12} /> {article.readingMinutes} {t.articlesSection.minRead}
               </span>
             </Card>
           </Link>

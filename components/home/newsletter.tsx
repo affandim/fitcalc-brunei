@@ -3,8 +3,10 @@
 import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
+import { useLocale } from "@/lib/i18n/locale-provider";
 
 export function Newsletter() {
+  const { t } = useLocale();
   const [email, setEmail] = React.useState("");
   const [submitted, setSubmitted] = React.useState(false);
 
@@ -21,15 +23,15 @@ export function Newsletter() {
           <Mail size={20} />
         </div>
         <h2 className="font-display mt-4 text-2xl font-medium sm:text-3xl">
-          New calculators, straight to your inbox
+          {t.newsletter.title}
         </h2>
         <p className="mx-auto mt-2 max-w-md text-sm text-foreground/60">
-          One short email a month. No spam, unsubscribe any time.
+          {t.newsletter.subtitle}
         </p>
 
         {submitted ? (
           <p className="mt-6 text-sm font-medium text-emerald">
-            You&apos;re subscribed — thanks for joining.
+            {t.newsletter.subscribed}
           </p>
         ) : (
           <form
@@ -41,12 +43,12 @@ export function Newsletter() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder={t.newsletter.placeholder}
               aria-label="Email address"
               className="h-12 w-full rounded-full border border-border bg-surface px-5 text-sm outline-none focus:border-emerald"
             />
             <Button type="submit" size="md" className="shrink-0">
-              Subscribe
+              {t.newsletter.subscribe}
             </Button>
           </form>
         )}
