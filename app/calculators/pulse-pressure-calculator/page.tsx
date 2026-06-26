@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { PulsePressureForm } from "@/components/calculators/pulse-pressure-form";
 
 const calculator = calculators.find((c) => c.slug === "pulse-pressure-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Pulse Pressure & MAP Calculator",
   description: "Calculate pulse pressure and mean arterial pressure (MAP) from a blood pressure reading.",
-  alternates: { canonical: "/calculators/pulse-pressure-calculator" },
-};
+  path: "/calculators/pulse-pressure-calculator",
+});
 
 const faqs = [
   {

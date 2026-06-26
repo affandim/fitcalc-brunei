@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { UnitConverterForm } from "@/components/calculators/unit-converter-form";
@@ -6,11 +7,11 @@ import { volumeUnits } from "@/lib/converters";
 
 const calculator = calculators.find((c) => c.slug === "volume-converter")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Volume Converter — Litres, Cups, Gallons & More",
   description: "Convert between millilitres, litres, teaspoons, cups, fluid ounces and gallons instantly.",
-  alternates: { canonical: "/calculators/volume-converter" },
-};
+  path: "/calculators/volume-converter",
+});
 
 const faqs = [
   {

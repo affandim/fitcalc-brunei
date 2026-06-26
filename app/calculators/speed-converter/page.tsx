@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { UnitConverterForm } from "@/components/calculators/unit-converter-form";
@@ -6,11 +7,11 @@ import { speedUnits } from "@/lib/converters";
 
 const calculator = calculators.find((c) => c.slug === "speed-converter")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Speed Converter — km/h, mph, Knots",
   description: "Convert between metres/second, km/h, mph and knots instantly.",
-  alternates: { canonical: "/calculators/speed-converter" },
-};
+  path: "/calculators/speed-converter",
+});
 
 const faqs = [
   {

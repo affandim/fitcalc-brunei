@@ -1,4 +1,10 @@
-export const metadata = { title: "Terms of Service" };
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata = buildPageMetadata({
+  title: "Terms of Service",
+  description: "The terms governing use of Calckoo's calculators and content.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

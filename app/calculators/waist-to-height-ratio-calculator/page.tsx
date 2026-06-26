@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { WaistToHeightForm } from "@/components/calculators/waist-to-height-form";
 
 const calculator = calculators.find((c) => c.slug === "waist-to-height-ratio-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Waist-to-Height Ratio Calculator",
   description: "Calculate your waist-to-height ratio, a simple and effective cardiovascular risk indicator.",
-  alternates: { canonical: "/calculators/waist-to-height-ratio-calculator" },
-};
+  path: "/calculators/waist-to-height-ratio-calculator",
+});
 
 const faqs = [
   {

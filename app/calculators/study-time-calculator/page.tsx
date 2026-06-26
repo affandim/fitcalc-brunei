@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { StudyTimeForm } from "@/components/calculators/study-time-form";
 
 const calculator = calculators.find((c) => c.slug === "study-time-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Study Time Planner — Daily Study Hours Before an Exam",
   description: "Plan how many hours to study per day before an exam, broken into Pomodoro sessions.",
-  alternates: { canonical: "/calculators/study-time-calculator" },
-};
+  path: "/calculators/study-time-calculator",
+});
 
 const faqs = [
   {

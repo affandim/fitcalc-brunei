@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { BmiForm } from "@/components/calculators/bmi-form";
 
 const calculator = calculators.find((c) => c.slug === "bmi-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "BMI Calculator — Check Your Body Mass Index Instantly",
-  description:
-    "Free BMI calculator with instant results, WHO classification ranges, and a plain-language explanation of what your number means.",
-  alternates: { canonical: "/calculators/bmi-calculator" },
-};
+  description: "Free BMI calculator with instant results, WHO classification ranges, and a plain-language explanation of what your number means.",
+  path: "/calculators/bmi-calculator",
+});
 
 const faqs = [
   {

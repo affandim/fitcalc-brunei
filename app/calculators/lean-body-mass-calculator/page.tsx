@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { LeanBodyMassForm } from "@/components/calculators/lean-body-mass-form";
 
 const calculator = calculators.find((c) => c.slug === "lean-body-mass-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Lean Body Mass Calculator — Boer Formula",
   description: "Estimate your lean body mass (everything that isn't fat) using the Boer formula.",
-  alternates: { canonical: "/calculators/lean-body-mass-calculator" },
-};
+  path: "/calculators/lean-body-mass-calculator",
+});
 
 const faqs = [
   {

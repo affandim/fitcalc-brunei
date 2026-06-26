@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { AlcoholCaloriesForm } from "@/components/calculators/alcohol-calories-form";
 
 const calculator = calculators.find((c) => c.slug === "alcohol-calories-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Alcohol Calories Calculator — Beer, Wine & Spirits",
   description: "Estimate how many calories you're consuming from beer, wine or spirits.",
-  alternates: { canonical: "/calculators/alcohol-calories-calculator" },
-};
+  path: "/calculators/alcohol-calories-calculator",
+});
 
 const faqs = [
   {

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { MuscleMassForm } from "@/components/calculators/muscle-mass-form";
 
 const calculator = calculators.find((c) => c.slug === "muscle-mass-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Muscle Mass Calculator — Estimate Skeletal Muscle Mass",
   description: "Estimate your skeletal muscle mass and what percentage of your body weight it represents.",
-  alternates: { canonical: "/calculators/muscle-mass-calculator" },
-};
+  path: "/calculators/muscle-mass-calculator",
+});
 
 const faqs = [
   {

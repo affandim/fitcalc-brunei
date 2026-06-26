@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Contact",
   description: "Get in touch with the Calckoo team.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

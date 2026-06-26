@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { PregnancyWeightGainForm } from "@/components/calculators/pregnancy-weight-gain-form";
 
 const calculator = calculators.find((c) => c.slug === "pregnancy-weight-gain-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Pregnancy Weight Gain Calculator — IOM Guidelines",
   description: "Find your recommended total pregnancy weight gain range based on pre-pregnancy BMI, using IOM guidelines.",
-  alternates: { canonical: "/calculators/pregnancy-weight-gain-calculator" },
-};
+  path: "/calculators/pregnancy-weight-gain-calculator",
+});
 
 const faqs = [
   {

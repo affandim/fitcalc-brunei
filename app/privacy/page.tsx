@@ -1,4 +1,10 @@
-export const metadata = { title: "Privacy Policy" };
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata = buildPageMetadata({
+  title: "Privacy Policy",
+  description: "How Calckoo collects and uses data, including analytics and advertising partners.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

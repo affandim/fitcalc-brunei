@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { RunningCaloriesForm } from "@/components/calculators/running-calories-form";
 
 const calculator = calculators.find((c) => c.slug === "running-calories-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Running Calories Calculator — Calories Burned by Pace",
   description: "Estimate how many calories you burn running, based on your weight, pace, and duration.",
-  alternates: { canonical: "/calculators/running-calories-calculator" },
-};
+  path: "/calculators/running-calories-calculator",
+});
 
 const faqs = [
   {

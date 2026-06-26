@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { TdeeForm } from "@/components/calculators/tdee-form";
 
 const calculator = calculators.find((c) => c.slug === "tdee-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "TDEE Calculator — Total Daily Energy Expenditure",
-  description:
-    "Calculate your Total Daily Energy Expenditure (TDEE) — the real number of calories you burn per day once activity is factored in.",
-  alternates: { canonical: "/calculators/tdee-calculator" },
-};
+  description: "Calculate your Total Daily Energy Expenditure (TDEE) — the real number of calories you burn per day once activity is factored in.",
+  path: "/calculators/tdee-calculator",
+});
 
 const faqs = [
   {

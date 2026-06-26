@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { GpaForm } from "@/components/calculators/gpa-form";
 
 const calculator = calculators.find((c) => c.slug === "gpa-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "GPA Calculator — Credit-Weighted Grade Point Average",
   description: "Calculate your cumulative GPA by adding each course's grade and credit hours.",
-  alternates: { canonical: "/calculators/gpa-calculator" },
-};
+  path: "/calculators/gpa-calculator",
+});
 
 const faqs = [
   {

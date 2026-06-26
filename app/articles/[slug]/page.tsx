@@ -6,6 +6,7 @@ import { articles } from "@/data/articles";
 import { articleContentRegistry } from "@/data/article-content-registry";
 import { InArticleAd } from "@/components/ads/ad-slots";
 import { calculators } from "@/data/calculators";
+import { buildPageMetadata } from "@/lib/seo";
 
 type PageParams = Promise<{ slug: string }>;
 
@@ -17,11 +18,11 @@ export async function generateMetadata({ params }: { params: PageParams }): Prom
   const { slug } = await params;
   const article = articles.find((a) => a.slug === slug);
   if (!article) return {};
-  return {
+  return buildPageMetadata({
     title: article.title,
     description: article.excerpt,
-    alternates: { canonical: `/articles/${article.slug}` },
-  };
+    path: `/articles/${article.slug}`,
+  });
 }
 
 export default async function ArticlePage({ params }: { params: PageParams }) {

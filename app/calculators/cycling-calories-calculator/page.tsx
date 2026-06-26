@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { CyclingCaloriesForm } from "@/components/calculators/cycling-calories-form";
 
 const calculator = calculators.find((c) => c.slug === "cycling-calories-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Cycling Calories Calculator — Calories Burned by Intensity",
   description: "Estimate how many calories you burn cycling, based on your weight, intensity, and duration.",
-  alternates: { canonical: "/calculators/cycling-calories-calculator" },
-};
+  path: "/calculators/cycling-calories-calculator",
+});
 
 const faqs = [
   {

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { TipForm } from "@/components/calculators/tip-form";
 
 const calculator = calculators.find((c) => c.slug === "tip-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Tip Calculator — Split a Bill Between Any Number of People",
   description: "Calculate the tip amount and split the total bill evenly between any number of people.",
-  alternates: { canonical: "/calculators/tip-calculator" },
-};
+  path: "/calculators/tip-calculator",
+});
 
 const faqs = [
   {

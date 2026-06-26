@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { IdealWeightForm } from "@/components/calculators/ideal-weight-form";
 
 const calculator = calculators.find((c) => c.slug === "ideal-weight-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Ideal Weight Calculator — Devine Formula",
   description: "Find your ideal body weight range based on height, using the widely used Devine formula.",
-  alternates: { canonical: "/calculators/ideal-weight-calculator" },
-};
+  path: "/calculators/ideal-weight-calculator",
+});
 
 const faqs = [
   {

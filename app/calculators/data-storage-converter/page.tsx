@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { UnitConverterForm } from "@/components/calculators/unit-converter-form";
@@ -6,11 +7,11 @@ import { dataStorageUnits } from "@/lib/converters";
 
 const calculator = calculators.find((c) => c.slug === "data-storage-converter")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Data Storage Converter — KB, MB, GB, TB",
   description: "Convert between bytes, kilobytes, megabytes, gigabytes and terabytes instantly.",
-  alternates: { canonical: "/calculators/data-storage-converter" },
-};
+  path: "/calculators/data-storage-converter",
+});
 
 const faqs = [
   {

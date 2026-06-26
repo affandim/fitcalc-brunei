@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { ProteinForm } from "@/components/calculators/protein-form";
 
 const calculator = calculators.find((c) => c.slug === "protein-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Protein Calculator — Daily Protein Target by Goal",
   description: "Calculate your daily protein target in grams based on your bodyweight and activity goal.",
-  alternates: { canonical: "/calculators/protein-calculator" },
-};
+  path: "/calculators/protein-calculator",
+});
 
 const faqs = [
   {

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { SavingsGoalForm } from "@/components/calculators/savings-goal-form";
 
 const calculator = calculators.find((c) => c.slug === "savings-goal-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Savings Goal Calculator — Monthly Contribution Needed",
   description: "Find out how much to save each month to reach a specific savings target by a target date.",
-  alternates: { canonical: "/calculators/savings-goal-calculator" },
-};
+  path: "/calculators/savings-goal-calculator",
+});
 
 const faqs = [
   {

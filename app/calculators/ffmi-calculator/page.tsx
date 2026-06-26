@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { FfmiForm } from "@/components/calculators/ffmi-form";
 
 const calculator = calculators.find((c) => c.slug === "ffmi-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "FFMI Calculator — Fat-Free Mass Index",
   description: "Calculate your Fat-Free Mass Index (FFMI), a benchmark used to assess muscularity relative to height.",
-  alternates: { canonical: "/calculators/ffmi-calculator" },
-};
+  path: "/calculators/ffmi-calculator",
+});
 
 const faqs = [
   {

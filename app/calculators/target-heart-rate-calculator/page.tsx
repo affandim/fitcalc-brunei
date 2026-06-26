@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { TargetHeartRateForm } from "@/components/calculators/target-heart-rate-form";
 
 const calculator = calculators.find((c) => c.slug === "target-heart-rate-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Target Heart Rate Calculator — Karvonen Formula",
   description: "Calculate your target training heart rate range using the Karvonen formula, which accounts for your resting heart rate.",
-  alternates: { canonical: "/calculators/target-heart-rate-calculator" },
-};
+  path: "/calculators/target-heart-rate-calculator",
+});
 
 const faqs = [
   {

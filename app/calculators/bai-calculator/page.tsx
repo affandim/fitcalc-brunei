@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { BaiForm } from "@/components/calculators/bai-form";
 
 const calculator = calculators.find((c) => c.slug === "bai-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Body Adiposity Index (BAI) Calculator",
   description: "Estimate body fat percentage from hip circumference and height alone, no scale required.",
-  alternates: { canonical: "/calculators/bai-calculator" },
-};
+  path: "/calculators/bai-calculator",
+});
 
 const faqs = [
   {

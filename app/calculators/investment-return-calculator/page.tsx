@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { InvestmentReturnForm } from "@/components/calculators/investment-return-form";
 
 const calculator = calculators.find((c) => c.slug === "investment-return-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Investment Return Calculator — Total & Annualized Return",
   description: "Calculate the total return and annualized (CAGR) return on an investment over any holding period.",
-  alternates: { canonical: "/calculators/investment-return-calculator" },
-};
+  path: "/calculators/investment-return-calculator",
+});
 
 const faqs = [
   {

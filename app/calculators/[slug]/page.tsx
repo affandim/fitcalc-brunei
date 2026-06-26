@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { calculators } from "@/data/calculators";
 import { InArticleAd } from "@/components/ads/ad-slots";
+import { buildPageMetadata } from "@/lib/seo";
 
 type PageParams = Promise<{ slug: string }>;
 
@@ -13,10 +14,11 @@ export async function generateMetadata({ params }: { params: PageParams }): Prom
   const { slug } = await params;
   const calc = calculators.find((c) => c.slug === slug);
   if (!calc) return {};
-  return {
+  return buildPageMetadata({
     title: calc.title,
     description: calc.shortDescription,
-  };
+    path: `/calculators/${calc.slug}`,
+  });
 }
 
 export default async function CalculatorPage({ params }: { params: PageParams }) {

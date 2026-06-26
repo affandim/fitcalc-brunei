@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { FiberIntakeForm } from "@/components/calculators/fiber-intake-form";
 
 const calculator = calculators.find((c) => c.slug === "fiber-intake-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Fiber Intake Calculator — Daily Fiber Target",
   description: "Find your recommended daily fiber intake by age and gender, based on Institute of Medicine guidelines.",
-  alternates: { canonical: "/calculators/fiber-intake-calculator" },
-};
+  path: "/calculators/fiber-intake-calculator",
+});
 
 const faqs = [
   {

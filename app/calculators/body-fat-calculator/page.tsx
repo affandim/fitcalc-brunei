@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { BodyFatForm } from "@/components/calculators/body-fat-form";
 
 const calculator = calculators.find((c) => c.slug === "body-fat-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Body Fat Calculator — US Navy Method",
-  description:
-    "Estimate your body fat percentage using the US Navy circumference method. Just three or four simple tape measurements, no scale required.",
-  alternates: { canonical: "/calculators/body-fat-calculator" },
-};
+  description: "Estimate your body fat percentage using the US Navy circumference method. Just three or four simple tape measurements, no scale required.",
+  path: "/calculators/body-fat-calculator",
+});
 
 const faqs = [
   {

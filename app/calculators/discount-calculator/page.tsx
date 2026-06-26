@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { DiscountForm } from "@/components/calculators/discount-form";
 
 const calculator = calculators.find((c) => c.slug === "discount-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Discount Calculator — Final Price & Savings",
   description: "Calculate the final sale price and total savings on any discounted item.",
-  alternates: { canonical: "/calculators/discount-calculator" },
-};
+  path: "/calculators/discount-calculator",
+});
 
 const faqs = [
   {

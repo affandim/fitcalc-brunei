@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { SimpleInterestForm } from "@/components/calculators/simple-interest-form";
 
 const calculator = calculators.find((c) => c.slug === "simple-interest-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Simple Interest Calculator",
   description: "Calculate simple interest on a principal amount over a fixed time period.",
-  alternates: { canonical: "/calculators/simple-interest-calculator" },
-};
+  path: "/calculators/simple-interest-calculator",
+});
 
 const faqs = [
   {

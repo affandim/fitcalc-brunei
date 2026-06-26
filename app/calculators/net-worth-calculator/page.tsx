@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { NetWorthForm } from "@/components/calculators/net-worth-form";
 
 const calculator = calculators.find((c) => c.slug === "net-worth-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Net Worth Calculator — Assets Minus Liabilities",
   description: "Calculate your net worth by adding up your assets and subtracting your liabilities.",
-  alternates: { canonical: "/calculators/net-worth-calculator" },
-};
+  path: "/calculators/net-worth-calculator",
+});
 
 const faqs = [
   {

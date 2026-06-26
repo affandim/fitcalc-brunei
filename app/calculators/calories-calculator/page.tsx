@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { CaloriesForm } from "@/components/calculators/calories-form";
 
 const calculator = calculators.find((c) => c.slug === "calories-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Calories Calculator — Daily Calorie Needs by Goal",
-  description:
-    "Find your daily calorie target to lose, maintain, or gain weight, plus a balanced macro split based on your activity level.",
-  alternates: { canonical: "/calculators/calories-calculator" },
-};
+  description: "Find your daily calorie target to lose, maintain, or gain weight, plus a balanced macro split based on your activity level.",
+  path: "/calculators/calories-calculator",
+});
 
 const faqs = [
   {

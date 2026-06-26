@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { HeightPredictorForm } from "@/components/calculators/height-predictor-form";
 
 const calculator = calculators.find((c) => c.slug === "height-predictor-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Child Height Predictor — Mid-Parental Height Method",
   description: "Predict your child's approximate adult height using the mid-parental height method.",
-  alternates: { canonical: "/calculators/height-predictor-calculator" },
-};
+  path: "/calculators/height-predictor-calculator",
+});
 
 const faqs = [
   {

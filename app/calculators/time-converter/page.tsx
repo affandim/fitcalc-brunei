@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { UnitConverterForm } from "@/components/calculators/unit-converter-form";
@@ -6,11 +7,11 @@ import { timeUnits } from "@/lib/converters";
 
 const calculator = calculators.find((c) => c.slug === "time-converter")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Time Converter — Seconds, Hours, Days, Weeks",
   description: "Convert between seconds, minutes, hours, days and weeks instantly.",
-  alternates: { canonical: "/calculators/time-converter" },
-};
+  path: "/calculators/time-converter",
+});
 
 const faqs = [
   {

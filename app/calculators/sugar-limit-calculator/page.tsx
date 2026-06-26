@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { SugarLimitForm } from "@/components/calculators/sugar-limit-form";
 
 const calculator = calculators.find((c) => c.slug === "sugar-limit-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Sugar Limit Calculator — Daily Added-Sugar Guideline",
   description: "Find your recommended daily added-sugar limit based on American Heart Association guidance.",
-  alternates: { canonical: "/calculators/sugar-limit-calculator" },
-};
+  path: "/calculators/sugar-limit-calculator",
+});
 
 const faqs = [
   {

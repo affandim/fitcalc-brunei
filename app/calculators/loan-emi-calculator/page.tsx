@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { LoanEmiForm } from "@/components/calculators/loan-emi-form";
 
 const calculator = calculators.find((c) => c.slug === "loan-emi-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Loan EMI Calculator — Monthly Payment & Total Interest",
   description: "Calculate your monthly loan payment (EMI), total repayment, and total interest for any loan amount, rate and term.",
-  alternates: { canonical: "/calculators/loan-emi-calculator" },
-};
+  path: "/calculators/loan-emi-calculator",
+});
 
 const faqs = [
   {

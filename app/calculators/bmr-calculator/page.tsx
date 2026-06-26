@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { BmrForm } from "@/components/calculators/bmr-form";
 
 const calculator = calculators.find((c) => c.slug === "bmr-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "BMR Calculator — Basal Metabolic Rate (Mifflin-St Jeor)",
-  description:
-    "Calculate your Basal Metabolic Rate using the Mifflin-St Jeor equation and see how your calorie burn changes across activity levels.",
-  alternates: { canonical: "/calculators/bmr-calculator" },
-};
+  description: "Calculate your Basal Metabolic Rate using the Mifflin-St Jeor equation and see how your calorie burn changes across activity levels.",
+  path: "/calculators/bmr-calculator",
+});
 
 const faqs = [
   {

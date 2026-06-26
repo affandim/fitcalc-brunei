@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { HeartRateZoneForm } from "@/components/calculators/heart-rate-zone-form";
 
 const calculator = calculators.find((c) => c.slug === "heart-rate-zone-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Heart Rate Zone Calculator — 5 Training Zones",
   description: "Find your five heart rate training zones, from warm-up to max effort, based on the Tanaka max heart rate formula.",
-  alternates: { canonical: "/calculators/heart-rate-zone-calculator" },
-};
+  path: "/calculators/heart-rate-zone-calculator",
+});
 
 const faqs = [
   {

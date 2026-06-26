@@ -2,11 +2,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { articles } from "@/data/articles";
 import { Card } from "@/components/ui/card";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Articles",
   description: "In-depth, plain-language guides behind every Calckoo calculator.",
-};
+  path: "/articles",
+});
 
 export default function ArticlesPage() {
   return (

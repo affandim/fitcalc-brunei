@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { PaceForm } from "@/components/calculators/pace-form";
 
 const calculator = calculators.find((c) => c.slug === "pace-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Pace Calculator — Running and Walking Pace Conversions",
   description: "Convert distance and time into pace per kilometre, pace per mile, and speed.",
-  alternates: { canonical: "/calculators/pace-calculator" },
-};
+  path: "/calculators/pace-calculator",
+});
 
 const faqs = [
   {

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { MacroForm } from "@/components/calculators/macro-form";
 
 const calculator = calculators.find((c) => c.slug === "macro-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Macro Calculator — Custom Protein, Carbs and Fat Split",
   description: "Turn your daily calorie target into grams of protein, carbs and fat with a fully adjustable split.",
-  alternates: { canonical: "/calculators/macro-calculator" },
-};
+  path: "/calculators/macro-calculator",
+});
 
 const faqs = [
   {

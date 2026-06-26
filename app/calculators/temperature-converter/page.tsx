@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { TemperatureConverterForm } from "@/components/calculators/temperature-converter-form";
 
 const calculator = calculators.find((c) => c.slug === "temperature-converter")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Temperature Converter — Celsius, Fahrenheit, Kelvin",
   description: "Convert between Celsius, Fahrenheit and Kelvin instantly.",
-  alternates: { canonical: "/calculators/temperature-converter" },
-};
+  path: "/calculators/temperature-converter",
+});
 
 const faqs = [
   {

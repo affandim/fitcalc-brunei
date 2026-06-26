@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { FrameSizeForm } from "@/components/calculators/frame-size-form";
 
 const calculator = calculators.find((c) => c.slug === "frame-size-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Body Frame Size Calculator — Wrist Circumference Method",
   description: "Find whether you have a small, medium or large body frame using the height-to-wrist-circumference ratio method.",
-  alternates: { canonical: "/calculators/frame-size-calculator" },
-};
+  path: "/calculators/frame-size-calculator",
+});
 
 const faqs = [
   {

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { ChildCalorieForm } from "@/components/calculators/child-calorie-form";
 
 const calculator = calculators.find((c) => c.slug === "child-calorie-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Child Calorie Needs Calculator (Ages 3-18)",
   description: "Estimate daily calorie needs for children and teenagers aged 3 to 18, by age, gender and activity level.",
-  alternates: { canonical: "/calculators/child-calorie-calculator" },
-};
+  path: "/calculators/child-calorie-calculator",
+});
 
 const faqs = [
   {

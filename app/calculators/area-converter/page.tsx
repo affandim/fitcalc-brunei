@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { UnitConverterForm } from "@/components/calculators/unit-converter-form";
@@ -6,11 +7,11 @@ import { areaUnits } from "@/lib/converters";
 
 const calculator = calculators.find((c) => c.slug === "area-converter")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Area Converter — m², Acres, Hectares & More",
   description: "Convert between square metres, square kilometres, square feet, acres and hectares instantly.",
-  alternates: { canonical: "/calculators/area-converter" },
-};
+  path: "/calculators/area-converter",
+});
 
 const faqs = [
   {

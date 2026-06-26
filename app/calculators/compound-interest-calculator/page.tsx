@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { CompoundInterestForm } from "@/components/calculators/compound-interest-form";
 
 const calculator = calculators.find((c) => c.slug === "compound-interest-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Compound Interest Calculator — Project Your Savings Growth",
   description: "See how your savings grow over time with compound interest and regular monthly contributions.",
-  alternates: { canonical: "/calculators/compound-interest-calculator" },
-};
+  path: "/calculators/compound-interest-calculator",
+});
 
 const faqs = [
   {

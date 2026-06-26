@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { BodySurfaceAreaForm } from "@/components/calculators/body-surface-area-form";
 
 const calculator = calculators.find((c) => c.slug === "body-surface-area-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Body Surface Area Calculator — Mosteller Formula",
   description: "Calculate body surface area (BSA) in square metres using the Mosteller formula.",
-  alternates: { canonical: "/calculators/body-surface-area-calculator" },
-};
+  path: "/calculators/body-surface-area-calculator",
+});
 
 const faqs = [
   {

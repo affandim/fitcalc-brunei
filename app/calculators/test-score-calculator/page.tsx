@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { TestScoreForm } from "@/components/calculators/test-score-form";
 
 const calculator = calculators.find((c) => c.slug === "test-score-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Test Score Calculator — Percentage & Letter Grade",
   description: "Calculate your test score percentage and letter grade from the number of correct answers.",
-  alternates: { canonical: "/calculators/test-score-calculator" },
-};
+  path: "/calculators/test-score-calculator",
+});
 
 const faqs = [
   {

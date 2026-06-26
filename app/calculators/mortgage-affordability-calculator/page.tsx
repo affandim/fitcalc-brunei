@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { MortgageAffordabilityForm } from "@/components/calculators/mortgage-affordability-form";
 
 const calculator = calculators.find((c) => c.slug === "mortgage-affordability-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Mortgage Affordability Calculator — 28/36 Rule",
   description: "Find out how much home you can afford based on your income, debts, and the standard 28/36 affordability rule.",
-  alternates: { canonical: "/calculators/mortgage-affordability-calculator" },
-};
+  path: "/calculators/mortgage-affordability-calculator",
+});
 
 const faqs = [
   {

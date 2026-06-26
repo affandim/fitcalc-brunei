@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { RunningForm } from "@/components/calculators/running-form";
 
 const calculator = calculators.find((c) => c.slug === "running-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Running Calculator — Predict Your Race Finish Time",
   description: "Predict your 5K, 10K, half marathon and marathon finish times from a recent run, using the Riegel formula.",
-  alternates: { canonical: "/calculators/running-calculator" },
-};
+  path: "/calculators/running-calculator",
+});
 
 const faqs = [
   {

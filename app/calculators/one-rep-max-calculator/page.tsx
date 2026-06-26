@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { OneRepMaxForm } from "@/components/calculators/one-rep-max-form";
 
 const calculator = calculators.find((c) => c.slug === "one-rep-max-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "One Rep Max Calculator — Epley Formula",
   description: "Estimate your one-rep max (1RM) from any working set, plus a training load table by percentage.",
-  alternates: { canonical: "/calculators/one-rep-max-calculator" },
-};
+  path: "/calculators/one-rep-max-calculator",
+});
 
 const faqs = [
   {

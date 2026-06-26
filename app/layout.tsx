@@ -46,11 +46,6 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   alternates: {
     canonical: "/",
-    languages: {
-      en: "/",
-      "ms-BN": "/ms",
-      id: "/id",
-    },
   },
   openGraph: {
     type: "website",
@@ -89,11 +84,6 @@ const jsonLd = {
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${siteConfig.url}/search?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
 };
 
 export default function RootLayout({

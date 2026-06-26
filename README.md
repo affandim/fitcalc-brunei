@@ -219,6 +219,27 @@ New formula engine: `lib/more-formulas.ts` (8 tests), plus extensions to `lib/fi
 total to **71 passing unit tests** across 5 engine files and **54 calculators** across all 9
 categories.
 
+## SEO audit fixes
+
+A self-audit of the live site found 3 real issues, now fixed:
+
+1. **OpenGraph/Twitter metadata bug (critical)** — every page except the homepage was showing
+   the homepage's `og:title`/`og:description`/`og:url` when shared on social media, because
+   Next.js doesn't deep-merge `openGraph` objects between a page and its parent layout — a page
+   that only overrides `title`/`description` silently inherits the *entire* parent `openGraph`
+   block. Fixed by introducing `lib/seo.ts` (`buildPageMetadata`), which explicitly sets
+   `openGraph` and `twitter` per page, and refactoring all 60+ page metadata exports to use it.
+2. **Broken hreflang tags** — the homepage advertised `ms-BN`/`id` alternates pointing to `/ms`
+   and `/id`, URLs that don't exist (the 3-language feature is client-side locale switching, not
+   separate URL routes). Removed until real per-locale URLs exist.
+3. **Broken SearchAction structured data** — the homepage's `WebSite` JSON-LD promised a
+   `/search?q=` results page that was never built. Removed until a real search results page
+   exists.
+
+Still open (tracked, not yet fixed): `/og-image.png` and `/public/icons/*` are referenced in
+metadata but the actual image files don't exist yet — social share previews and PWA icons will
+be blank until those assets are added.
+
 ## Next steps (Milestone 9)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated

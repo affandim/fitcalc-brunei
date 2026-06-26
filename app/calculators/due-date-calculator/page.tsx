@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { DueDateForm } from "@/components/calculators/due-date-form";
 
 const calculator = calculators.find((c) => c.slug === "due-date-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Due Date Calculator — Estimate Your Pregnancy Due Date",
   description: "Estimate your pregnancy due date and current week using Naegele's rule.",
-  alternates: { canonical: "/calculators/due-date-calculator" },
-};
+  path: "/calculators/due-date-calculator",
+});
 
 const faqs = [
   {

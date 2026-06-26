@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { BloodPressureForm } from "@/components/calculators/blood-pressure-form";
 
 const calculator = calculators.find((c) => c.slug === "blood-pressure-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Blood Pressure Category Calculator — AHA Guidelines",
   description: "Check your blood pressure category based on American Heart Association guidelines.",
-  alternates: { canonical: "/calculators/blood-pressure-calculator" },
-};
+  path: "/calculators/blood-pressure-calculator",
+});
 
 const faqs = [
   {

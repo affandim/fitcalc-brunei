@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { calculators } from "@/data/calculators";
 import { CalculatorShell } from "@/components/calculators/calculator-shell";
 import { WaistHipForm } from "@/components/calculators/waist-hip-form";
 
 const calculator = calculators.find((c) => c.slug === "waist-hip-ratio-calculator")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Waist-Hip Ratio Calculator — Body Fat Distribution",
   description: "Calculate your waist-to-hip ratio, a WHO-recognized indicator of body fat distribution and cardiovascular risk.",
-  alternates: { canonical: "/calculators/waist-hip-ratio-calculator" },
-};
+  path: "/calculators/waist-hip-ratio-calculator",
+});
 
 const faqs = [
   {
