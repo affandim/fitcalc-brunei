@@ -8,7 +8,7 @@ Disallow: /admin
 Disallow: /api
 
 # Host
-Host: https://fitcalcbrunei.com
+Host: https://calckoo.com
 
 # Sitemaps
-Sitemap: https://fitcalcbrunei.com/sitemap.xml
+Sitemap: https://calckoo.com/sitemap.xml

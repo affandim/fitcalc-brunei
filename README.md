@@ -166,6 +166,18 @@ next phase rather than something to rush.
 Language preference persists via `localStorage` (`fitcalc-locale` key) and applies instantly
 across the whole site without a page reload.
 
+## Adsterra integration
+
+The Top Banner ad slot is live with a real Adsterra ad unit (`components/ads/adsterra-banner.tsx`
++ `components/ads/ad-slots.tsx`). The ad script is loaded inside an isolated `iframe srcDoc`,
+which is the standard safe pattern for embedding `document.write`-based ad tags (like Adsterra's
+`invoke.js`) inside a React-managed DOM without it interfering with hydration.
+
+To add more ad units: create the unit in the Adsterra dashboard, copy its `key` (and `invoke.js`
+host if different from `highperformanceformat.com`), then fill in the matching `null` in the
+`adsterraKeys` object at the top of `components/ads/ad-slots.tsx`. Each slot falls back to a
+dashed placeholder automatically until a key is provided.
+
 ## Next steps (Milestone 6)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
