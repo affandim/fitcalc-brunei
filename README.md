@@ -236,9 +236,19 @@ A self-audit of the live site found 3 real issues, now fixed:
    `/search?q=` results page that was never built. Removed until a real search results page
    exists.
 
-Still open (tracked, not yet fixed): `/og-image.png` and `/public/icons/*` are referenced in
-metadata but the actual image files don't exist yet — social share previews and PWA icons will
-be blank until those assets are added.
+## OG image & PWA icons
+
+All image assets referenced in `app/layout.tsx` and `public/manifest.webmanifest` now exist —
+nothing left as a placeholder:
+
+- `public/og-image.png` (1200x630) — sand background, emerald "Calc**koo**" wordmark, vital-tape
+  motif, tagline, category icons.
+- `public/icons/icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — emerald-deep background,
+  mint/white "Ck" monogram, vital-tape tick accent.
+
+Both generated from SVG sources rendered via `sharp` (bundled with Next.js, no extra
+dependency). Replace with designer-made versions anytime — the dimensions are already correct
+for their respective uses (OG/Twitter card preview, PWA install icon, iOS home screen icon).
 
 ## Next steps (Milestone 9)
 
