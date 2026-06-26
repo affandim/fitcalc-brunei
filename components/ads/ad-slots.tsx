@@ -9,9 +9,9 @@ import { AdsterraBanner } from "@/components/ads/adsterra-banner";
 const adsterraKeys = {
   topBanner: "b04d6714c5e53838a9438b035e39dceb" as string | null,
   sidebar: null as string | null,
-  inArticle: null as string | null,
+  inArticle: "ca6909fcb242b90c2067e0c82e0516ce" as string | null,
   stickyBottom: null as string | null,
-  mobileBanner: null as string | null,
+  mobileBanner: "ab9382696e9ee31762c4c4938ef924a9" as string | null,
 };
 
 interface AdSlotProps {

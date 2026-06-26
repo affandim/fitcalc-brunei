@@ -12,6 +12,7 @@ import {
   localizedCategoryTitle,
 } from "@/lib/i18n/localize";
 import type { CalculatorMeta } from "@/types";
+import { InArticleAd } from "@/components/ads/ad-slots";
 
 interface FaqItem {
   question: string;
@@ -140,6 +141,11 @@ export function CalculatorShell({ calculator, children, article, faqs }: Calcula
 
       {/* Article */}
       <div className="prose-fitcalc mt-16 border-t border-border pt-12">{article}</div>
+
+      {/* In-article ad */}
+      <div className="mt-10">
+        <InArticleAd />
+      </div>
 
       {/* FAQ */}
       <div className="mt-16 border-t border-border pt-12">
