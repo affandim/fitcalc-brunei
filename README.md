@@ -182,7 +182,44 @@ A site-wide Adsterra Popunder script is also loaded once in `app/layout.tsx` via
 (`strategy="lazyOnload"`), so it doesn't block initial page render and applies across every
 page automatically.
 
-## Next steps (Milestone 6)
+## Milestone 7 — Pregnancy, Children, Medical, Education & Converters (39 calculators total)
+
+14 new calculators fill in the categories that were previously empty:
+
+| Category | Calculators |
+|---|---|
+| Pregnancy | Due Date Calculator (Naegele's rule), Pregnancy Weight Gain (IOM guidelines) |
+| Children | Child Height Predictor (mid-parental method), Child Calorie Needs (ages 3-18) |
+| Medical | Blood Pressure Category (AHA), Pulse Pressure & MAP |
+| Education | GPA Calculator (dynamic course list via `useFieldArray`), Study Time Planner |
+| Converters | Length, Weight, Temperature, Volume, Speed, Time |
+
+New formula engines: `lib/life-formulas.ts` (pregnancy/children/medical/education, 10 tests) and
+`lib/converters.ts` (unit conversion, 10 tests) — bringing the total to **52 passing unit tests**
+across 4 engine files.
+
+The 6 converters share one generic `UnitConverterForm` component (`components/calculators/
+unit-converter-form.tsx`) parameterized by a unit table — no duplicated conversion UI code.
+Temperature gets its own small component since it needs an offset, not just a multiplication
+factor.
+
+## Milestone 8 — 15 more calculators (54 total)
+
+| Category | New calculators |
+|---|---|
+| Health | Body Adiposity Index, Body Frame Size |
+| Fitness | One Rep Max, Running Calories, Cycling Calories |
+| Nutrition | Fiber Intake, Sugar Limit, Alcohol Calories |
+| Finance | Tip, Discount, Net Worth, Mortgage Affordability |
+| Education | Test Score / Letter Grade |
+| Converters | Area, Data Storage |
+
+New formula engine: `lib/more-formulas.ts` (8 tests), plus extensions to `lib/finance-formulas.ts`
+(+5 tests), `lib/life-formulas.ts` (+2 tests), and `lib/converters.ts` (+4 tests) — bringing the
+total to **71 passing unit tests** across 5 engine files and **54 calculators** across all 9
+categories.
+
+## Next steps (Milestone 9)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
 versions of the long-form articles/FAQs, real PWA icons, and og-image.png.

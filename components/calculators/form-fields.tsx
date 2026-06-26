@@ -37,6 +37,35 @@ export function NumberField({ label, unit, error, register, name, placeholder }:
   );
 }
 
+interface DateFieldProps {
+  label: string;
+  error?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- shared across many distinct zod schemas
+  register: any;
+  name: string;
+}
+
+export function DateField({ label, error, register, name }: DateFieldProps) {
+  return (
+    <label className="block">
+      <span className="text-sm font-medium text-foreground/80">{label}</span>
+      <div
+        className={cn(
+          "mt-1.5 flex h-12 items-center rounded-xl border border-border bg-surface px-4 transition-colors focus-within:border-emerald",
+          error && "border-red-400"
+        )}
+      >
+        <input
+          type="date"
+          {...register(name)}
+          className="w-full bg-transparent text-sm outline-none"
+        />
+      </div>
+      {error && <span className="mt-1 block text-xs text-red-500">{error}</span>}
+    </label>
+  );
+}
+
 interface SegmentedControlProps<T extends string> {
   label: string;
   value: T;

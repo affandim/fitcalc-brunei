@@ -5,6 +5,10 @@ import {
   calculateSimpleInterest,
   calculateSavingsGoal,
   calculateInvestmentReturn,
+  calculateTip,
+  calculateDiscount,
+  calculateNetWorth,
+  calculateMortgageAffordability,
 } from "@/lib/finance-formulas";
 
 describe("calculateLoanPayment", () => {
@@ -60,5 +64,44 @@ describe("calculateInvestmentReturn", () => {
     expect(result.totalReturnPercent).toBeCloseTo(60, 2);
     expect(result.annualizedReturnPercent).toBeGreaterThan(0);
     expect(result.profit).toBeCloseTo(6000, 5);
+  });
+});
+
+describe("calculateTip", () => {
+  it("splits the total bill including tip across people", () => {
+    const result = calculateTip(100, 20, 4);
+    expect(result.tipAmount).toBeCloseTo(20, 5);
+    expect(result.totalAmount).toBeCloseTo(120, 5);
+    expect(result.perPerson).toBeCloseTo(30, 5);
+  });
+});
+
+describe("calculateDiscount", () => {
+  it("computes savings and final price correctly", () => {
+    const result = calculateDiscount(200, 25);
+    expect(result.savings).toBeCloseTo(50, 5);
+    expect(result.finalPrice).toBeCloseTo(150, 5);
+  });
+});
+
+describe("calculateNetWorth", () => {
+  it("subtracts liabilities from assets", () => {
+    expect(calculateNetWorth(50000, 20000)).toBe(30000);
+    expect(calculateNetWorth(10000, 25000)).toBe(-15000);
+  });
+});
+
+describe("calculateMortgageAffordability", () => {
+  it("caps the monthly payment at the lower of the front-end and back-end limits", () => {
+    const result = calculateMortgageAffordability(60000, 500, 20000, 5, 30);
+    expect(result.maxMonthlyPayment).toBeGreaterThan(0);
+    expect(result.maxLoanAmount).toBeGreaterThan(0);
+    expect(result.maxHomePrice).toBeCloseTo(result.maxLoanAmount + 20000, 5);
+  });
+
+  it("reduces affordability as existing monthly debts increase", () => {
+    const lowDebt = calculateMortgageAffordability(60000, 100, 20000, 5, 30);
+    const highDebt = calculateMortgageAffordability(60000, 1500, 20000, 5, 30);
+    expect(highDebt.maxMonthlyPayment).toBeLessThan(lowDebt.maxMonthlyPayment);
   });
 });

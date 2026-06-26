@@ -151,3 +151,77 @@ export function calculateInvestmentReturn(
 
   return { totalReturnPercent, annualizedReturnPercent, profit };
 }
+
+/* -------------------------------- Tip -------------------------------- */
+
+export interface TipResult {
+  tipAmount: number;
+  totalAmount: number;
+  perPerson: number;
+}
+
+export function calculateTip(billAmount: number, tipPercent: number, numPeople: number): TipResult {
+  const tipAmount = billAmount * (tipPercent / 100);
+  const totalAmount = billAmount + tipAmount;
+  const people = Math.max(1, numPeople);
+  return { tipAmount, totalAmount, perPerson: totalAmount / people };
+}
+
+/* ------------------------------ Discount ------------------------------ */
+
+export interface DiscountResult {
+  finalPrice: number;
+  savings: number;
+}
+
+export function calculateDiscount(originalPrice: number, discountPercent: number): DiscountResult {
+  const savings = originalPrice * (discountPercent / 100);
+  return { finalPrice: originalPrice - savings, savings };
+}
+
+/* ------------------------------ Net Worth ------------------------------ */
+
+export function calculateNetWorth(totalAssets: number, totalLiabilities: number): number {
+  return totalAssets - totalLiabilities;
+}
+
+/* ------------------------ Mortgage Affordability ------------------------ */
+
+export interface MortgageAffordabilityResult {
+  maxMonthlyPayment: number;
+  maxLoanAmount: number;
+  maxHomePrice: number;
+}
+
+/**
+ * 28/36 rule: housing payment capped at 28% of gross monthly income, and
+ * total debt (including housing) capped at 36% of gross monthly income.
+ * Reverses the standard amortization formula to find the max loan amount
+ * that fits within that monthly payment.
+ */
+export function calculateMortgageAffordability(
+  annualIncome: number,
+  monthlyDebts: number,
+  downPayment: number,
+  annualRatePercent: number,
+  termYears: number
+): MortgageAffordabilityResult {
+  const grossMonthlyIncome = annualIncome / 12;
+  const frontEndCap = grossMonthlyIncome * 0.28;
+  const backEndCap = grossMonthlyIncome * 0.36 - monthlyDebts;
+  const maxMonthlyPayment = Math.max(0, Math.min(frontEndCap, backEndCap));
+
+  const monthlyRate = annualRatePercent / 100 / 12;
+  const numPayments = termYears * 12;
+
+  const maxLoanAmount =
+    monthlyRate === 0
+      ? maxMonthlyPayment * numPayments
+      : (maxMonthlyPayment * (1 - Math.pow(1 + monthlyRate, -numPayments))) / monthlyRate;
+
+  return {
+    maxMonthlyPayment,
+    maxLoanAmount,
+    maxHomePrice: maxLoanAmount + downPayment,
+  };
+}

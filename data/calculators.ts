@@ -201,6 +201,238 @@ export const calculators: CalculatorMeta[] = [
       id: { title: "Kalkulator Imbal Hasil Investasi", shortDescription: "Total dan imbal hasil investasi tahunan." },
     },
   },
+  {
+    slug: "due-date-calculator", title: "Due Date Calculator", shortDescription: "Estimate your pregnancy due date.",
+    category: "pregnancy", icon: "Baby", popular: true,
+    translations: {
+      "ms-bn": { title: "Kalkulator Tarikh Jangkaan Bersalin", shortDescription: "Anggarkan tarikh jangkaan bersalin anda." },
+      id: { title: "Kalkulator Perkiraan Tanggal Lahir", shortDescription: "Perkirakan tanggal perkiraan lahir Anda." },
+    },
+  },
+  {
+    slug: "pregnancy-weight-gain-calculator", title: "Pregnancy Weight Gain Calculator", shortDescription: "Recommended weight gain range during pregnancy.",
+    category: "pregnancy", icon: "Activity",
+    translations: {
+      "ms-bn": { title: "Kalkulator Kenaikan Berat Semasa Hamil", shortDescription: "Julat kenaikan berat disyorkan semasa hamil." },
+      id: { title: "Kalkulator Kenaikan Berat Hamil", shortDescription: "Rentang kenaikan berat yang disarankan saat hamil." },
+    },
+  },
+  {
+    slug: "height-predictor-calculator", title: "Child Height Predictor", shortDescription: "Predict your child's adult height.",
+    category: "children", icon: "PersonStanding", popular: true,
+    translations: {
+      "ms-bn": { title: "Ramalan Tinggi Kanak-kanak", shortDescription: "Ramalkan tinggi dewasa anak anda." },
+      id: { title: "Prediksi Tinggi Anak", shortDescription: "Prediksi tinggi badan anak saat dewasa." },
+    },
+  },
+  {
+    slug: "child-calorie-calculator", title: "Child Calorie Needs Calculator", shortDescription: "Estimated daily calories for children 3-18.",
+    category: "children", icon: "Flame",
+    translations: {
+      "ms-bn": { title: "Kalkulator Keperluan Kalori Kanak-kanak", shortDescription: "Anggaran kalori harian untuk kanak-kanak 3-18 tahun." },
+      id: { title: "Kalkulator Kebutuhan Kalori Anak", shortDescription: "Perkiraan kalori harian untuk anak usia 3-18 tahun." },
+    },
+  },
+  {
+    slug: "blood-pressure-calculator", title: "Blood Pressure Category Calculator", shortDescription: "Check your blood pressure category.",
+    category: "medical", icon: "HeartPulse", popular: true,
+    translations: {
+      "ms-bn": { title: "Kalkulator Kategori Tekanan Darah", shortDescription: "Semak kategori tekanan darah anda." },
+      id: { title: "Kalkulator Kategori Tekanan Darah", shortDescription: "Periksa kategori tekanan darah Anda." },
+    },
+  },
+  {
+    slug: "pulse-pressure-calculator", title: "Pulse Pressure & MAP Calculator", shortDescription: "Calculate pulse pressure and mean arterial pressure.",
+    category: "medical", icon: "Activity",
+    translations: {
+      "ms-bn": { title: "Kalkulator Tekanan Nadi & MAP", shortDescription: "Kira tekanan nadi dan tekanan arteri purata." },
+      id: { title: "Kalkulator Tekanan Nadi & MAP", shortDescription: "Hitung tekanan nadi dan tekanan arteri rata-rata." },
+    },
+  },
+  {
+    slug: "gpa-calculator", title: "GPA Calculator", shortDescription: "Calculate your credit-weighted GPA.",
+    category: "education", icon: "GraduationCap", popular: true,
+    translations: {
+      "ms-bn": { title: "Kalkulator GPA", shortDescription: "Kira GPA berwajaran kredit anda." },
+      id: { title: "Kalkulator IPK", shortDescription: "Hitung IPK berbobot kredit Anda." },
+    },
+  },
+  {
+    slug: "study-time-calculator", title: "Study Time Planner", shortDescription: "Plan daily study hours before an exam.",
+    category: "education", icon: "GraduationCap",
+    translations: {
+      "ms-bn": { title: "Perancang Masa Belajar", shortDescription: "Rancang jam belajar harian sebelum peperiksaan." },
+      id: { title: "Perencana Waktu Belajar", shortDescription: "Rencanakan jam belajar harian sebelum ujian." },
+    },
+  },
+  {
+    slug: "length-converter", title: "Length Converter", shortDescription: "Convert between metres, feet, miles and more.",
+    category: "converters", icon: "ArrowLeftRight", popular: true,
+    translations: {
+      "ms-bn": { title: "Penukar Panjang", shortDescription: "Tukar antara meter, kaki, batu dan lain-lain." },
+      id: { title: "Konverter Panjang", shortDescription: "Konversi antara meter, kaki, mil, dan lainnya." },
+    },
+  },
+  {
+    slug: "weight-converter", title: "Weight Converter", shortDescription: "Convert between kg, lb, oz and stone.",
+    category: "converters", icon: "ArrowLeftRight", popular: true,
+    translations: {
+      "ms-bn": { title: "Penukar Berat", shortDescription: "Tukar antara kg, lb, oz dan stone." },
+      id: { title: "Konverter Berat", shortDescription: "Konversi antara kg, lb, oz, dan stone." },
+    },
+  },
+  {
+    slug: "temperature-converter", title: "Temperature Converter", shortDescription: "Convert between Celsius, Fahrenheit and Kelvin.",
+    category: "converters", icon: "ArrowLeftRight", popular: true,
+    translations: {
+      "ms-bn": { title: "Penukar Suhu", shortDescription: "Tukar antara Celsius, Fahrenheit dan Kelvin." },
+      id: { title: "Konverter Suhu", shortDescription: "Konversi antara Celsius, Fahrenheit, dan Kelvin." },
+    },
+  },
+  {
+    slug: "volume-converter", title: "Volume Converter", shortDescription: "Convert between litres, cups, gallons and more.",
+    category: "converters", icon: "ArrowLeftRight",
+    translations: {
+      "ms-bn": { title: "Penukar Isipadu", shortDescription: "Tukar antara liter, cawan, gelen dan lain-lain." },
+      id: { title: "Konverter Volume", shortDescription: "Konversi antara liter, cup, galon, dan lainnya." },
+    },
+  },
+  {
+    slug: "speed-converter", title: "Speed Converter", shortDescription: "Convert between km/h, mph and knots.",
+    category: "converters", icon: "ArrowLeftRight",
+    translations: {
+      "ms-bn": { title: "Penukar Kelajuan", shortDescription: "Tukar antara km/j, mph dan knot." },
+      id: { title: "Konverter Kecepatan", shortDescription: "Konversi antara km/jam, mph, dan knot." },
+    },
+  },
+  {
+    slug: "time-converter", title: "Time Converter", shortDescription: "Convert between seconds, hours, days and weeks.",
+    category: "converters", icon: "ArrowLeftRight",
+    translations: {
+      "ms-bn": { title: "Penukar Masa", shortDescription: "Tukar antara saat, jam, hari dan minggu." },
+      id: { title: "Konverter Waktu", shortDescription: "Konversi antara detik, jam, hari, dan minggu." },
+    },
+  },
+  {
+    slug: "bai-calculator", title: "Body Adiposity Index Calculator", shortDescription: "Estimate body fat % from hip and height alone.",
+    category: "health", icon: "Activity",
+    translations: {
+      "ms-bn": { title: "Kalkulator Indeks Adipositi Badan", shortDescription: "Anggarkan peratus lemak badan dari pinggul dan tinggi." },
+      id: { title: "Kalkulator Indeks Adipositas Tubuh", shortDescription: "Perkirakan persen lemak tubuh dari pinggul dan tinggi." },
+    },
+  },
+  {
+    slug: "frame-size-calculator", title: "Body Frame Size Calculator", shortDescription: "Find your body frame size from wrist circumference.",
+    category: "health", icon: "Ruler",
+    translations: {
+      "ms-bn": { title: "Kalkulator Saiz Rangka Badan", shortDescription: "Cari saiz rangka badan dari lilitan pergelangan tangan." },
+      id: { title: "Kalkulator Ukuran Rangka Tubuh", shortDescription: "Temukan ukuran rangka tubuh dari lingkar pergelangan tangan." },
+    },
+  },
+  {
+    slug: "one-rep-max-calculator", title: "One Rep Max Calculator", shortDescription: "Estimate your 1RM and training load percentages.",
+    category: "fitness", icon: "Dumbbell", popular: true,
+    translations: {
+      "ms-bn": { title: "Kalkulator Satu Ulangan Maksimum", shortDescription: "Anggarkan 1RM dan peratusan beban latihan anda." },
+      id: { title: "Kalkulator One Rep Max", shortDescription: "Perkirakan 1RM dan persentase beban latihan Anda." },
+    },
+  },
+  {
+    slug: "running-calories-calculator", title: "Running Calories Calculator", shortDescription: "Calories burned while running, by pace.",
+    category: "fitness", icon: "Timer",
+    translations: {
+      "ms-bn": { title: "Kalkulator Kalori Berlari", shortDescription: "Kalori terbakar semasa berlari, mengikut kelajuan." },
+      id: { title: "Kalkulator Kalori Lari", shortDescription: "Kalori terbakar saat lari, sesuai pace." },
+    },
+  },
+  {
+    slug: "cycling-calories-calculator", title: "Cycling Calories Calculator", shortDescription: "Calories burned while cycling, by intensity.",
+    category: "fitness", icon: "Activity",
+    translations: {
+      "ms-bn": { title: "Kalkulator Kalori Berbasikal", shortDescription: "Kalori terbakar semasa berbasikal, mengikut intensiti." },
+      id: { title: "Kalkulator Kalori Bersepeda", shortDescription: "Kalori terbakar saat bersepeda, sesuai intensitas." },
+    },
+  },
+  {
+    slug: "fiber-intake-calculator", title: "Fiber Intake Calculator", shortDescription: "Your recommended daily fiber target.",
+    category: "nutrition", icon: "Apple",
+    translations: {
+      "ms-bn": { title: "Kalkulator Pengambilan Fiber", shortDescription: "Sasaran fiber harian disyorkan untuk anda." },
+      id: { title: "Kalkulator Asupan Serat", shortDescription: "Target serat harian yang disarankan untuk Anda." },
+    },
+  },
+  {
+    slug: "sugar-limit-calculator", title: "Sugar Limit Calculator", shortDescription: "Your daily added-sugar limit (AHA guideline).",
+    category: "nutrition", icon: "GlassWater",
+    translations: {
+      "ms-bn": { title: "Kalkulator Had Gula", shortDescription: "Had gula tambahan harian anda (garis panduan AHA)." },
+      id: { title: "Kalkulator Batas Gula", shortDescription: "Batas gula tambahan harian Anda (pedoman AHA)." },
+    },
+  },
+  {
+    slug: "alcohol-calories-calculator", title: "Alcohol Calories Calculator", shortDescription: "Calories from beer, wine and spirits.",
+    category: "nutrition", icon: "GlassWater",
+    translations: {
+      "ms-bn": { title: "Kalkulator Kalori Alkohol", shortDescription: "Kalori daripada bir, wain dan minuman keras." },
+      id: { title: "Kalkulator Kalori Alkohol", shortDescription: "Kalori dari bir, anggur, dan minuman keras." },
+    },
+  },
+  {
+    slug: "tip-calculator", title: "Tip Calculator", shortDescription: "Split a bill with tip across any number of people.",
+    category: "finance", icon: "Wallet", popular: true,
+    translations: {
+      "ms-bn": { title: "Kalkulator Tip", shortDescription: "Bahagikan bil dengan tip antara sebarang bilangan orang." },
+      id: { title: "Kalkulator Tip", shortDescription: "Bagi tagihan dengan tip ke sejumlah orang." },
+    },
+  },
+  {
+    slug: "discount-calculator", title: "Discount Calculator", shortDescription: "Find the final price and savings on a sale.",
+    category: "finance", icon: "Percent", popular: true,
+    translations: {
+      "ms-bn": { title: "Kalkulator Diskaun", shortDescription: "Cari harga akhir dan penjimatan semasa jualan." },
+      id: { title: "Kalkulator Diskon", shortDescription: "Temukan harga akhir dan penghematan saat diskon." },
+    },
+  },
+  {
+    slug: "net-worth-calculator", title: "Net Worth Calculator", shortDescription: "Total assets minus total liabilities.",
+    category: "finance", icon: "Wallet",
+    translations: {
+      "ms-bn": { title: "Kalkulator Nilai Bersih", shortDescription: "Jumlah aset tolak jumlah liabiliti." },
+      id: { title: "Kalkulator Kekayaan Bersih", shortDescription: "Total aset dikurangi total liabilitas." },
+    },
+  },
+  {
+    slug: "mortgage-affordability-calculator", title: "Mortgage Affordability Calculator", shortDescription: "How much home you can afford (28/36 rule).",
+    category: "finance", icon: "Wallet", popular: true,
+    translations: {
+      "ms-bn": { title: "Kalkulator Keterjangkauan Gadai Janji", shortDescription: "Berapa rumah yang anda mampu (peraturan 28/36)." },
+      id: { title: "Kalkulator Keterjangkauan KPR", shortDescription: "Berapa rumah yang Anda mampu (aturan 28/36)." },
+    },
+  },
+  {
+    slug: "test-score-calculator", title: "Test Score Calculator", shortDescription: "Percentage and letter grade from correct answers.",
+    category: "education", icon: "GraduationCap",
+    translations: {
+      "ms-bn": { title: "Kalkulator Markah Ujian", shortDescription: "Peratusan dan gred huruf daripada jawapan betul." },
+      id: { title: "Kalkulator Nilai Ujian", shortDescription: "Persentase dan nilai huruf dari jawaban benar." },
+    },
+  },
+  {
+    slug: "area-converter", title: "Area Converter", shortDescription: "Convert between m², acres, hectares and more.",
+    category: "converters", icon: "ArrowLeftRight",
+    translations: {
+      "ms-bn": { title: "Penukar Luas", shortDescription: "Tukar antara m², ekar, hektar dan lain-lain." },
+      id: { title: "Konverter Luas", shortDescription: "Konversi antara m², acre, hektar, dan lainnya." },
+    },
+  },
+  {
+    slug: "data-storage-converter", title: "Data Storage Converter", shortDescription: "Convert between KB, MB, GB and TB.",
+    category: "converters", icon: "ArrowLeftRight",
+    translations: {
+      "ms-bn": { title: "Penukar Storan Data", shortDescription: "Tukar antara KB, MB, GB dan TB." },
+      id: { title: "Konverter Penyimpanan Data", shortDescription: "Konversi antara KB, MB, GB, dan TB." },
+    },
+  },
 ];
 
 export function getCalculatorsByCategory(category: string) {
