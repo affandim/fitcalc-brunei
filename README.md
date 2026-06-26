@@ -178,6 +178,10 @@ host if different from `highperformanceformat.com`), then fill in the matching `
 `adsterraKeys` object at the top of `components/ads/ad-slots.tsx`. Each slot falls back to a
 dashed placeholder automatically until a key is provided.
 
+A site-wide Adsterra Popunder script is also loaded once in `app/layout.tsx` via `next/script`
+(`strategy="lazyOnload"`), so it doesn't block initial page render and applies across every
+page automatically.
+
 ## Next steps (Milestone 6)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated

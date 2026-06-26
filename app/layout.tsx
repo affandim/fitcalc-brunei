@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -120,6 +121,11 @@ export default function RootLayout({
             <Footer />
           </LocaleProvider>
         </ThemeProvider>
+        {/* Adsterra popunder — loads once site-wide, after the page is interactive. */}
+        <Script
+          src="https://pl29905761.effectivecpmnetwork.com/1a/c4/7b/1ac47bd9955c7ab04386f9989762aafc.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
