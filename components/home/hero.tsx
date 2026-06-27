@@ -17,49 +17,29 @@ export function Hero() {
     <section className="relative overflow-hidden bg-surface-muted/40">
       <div className="mx-auto max-w-7xl px-4 pt-20 pb-16 sm:px-6 sm:pt-28 sm:pb-24 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-sm font-medium uppercase tracking-[0.2em] text-emerald"
-          >
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-emerald">
             {t.hero.eyebrow}
-          </motion.p>
+          </p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="font-display mt-4 text-balance text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl"
-          >
+          <h1 className="font-display mt-4 text-balance text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl">
             {t.hero.headline1}
             <span className="text-emerald">.</span>
             <br />
             {t.hero.headline2}
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mx-auto mt-5 max-w-xl text-balance text-foreground/65"
-          >
+          <p className="mx-auto mt-5 max-w-xl text-balance text-foreground/65">
             {t.hero.subtext}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="mx-auto mt-8 max-w-xl"
-          >
+          <div className="mx-auto mt-8 max-w-xl">
             <SearchBar size="lg" />
-          </motion.div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-12 flex items-center justify-center gap-8 sm:gap-12"
           >
             {stats.map((s) => (

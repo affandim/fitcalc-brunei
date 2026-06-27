@@ -293,6 +293,23 @@ territory). Two real causes found and fixed:
    never used at all. Trimmed to a single weight/style, cutting 5 unnecessary font file
    downloads.
 
+## LCP fix — hero text was hidden until JS finished animating it in
+
+A second PageSpeed check after the image/font fixes showed FCP improved dramatically (2.7s →
+0.9s) but LCP barely moved (4.7s → 4.3s). That gap — fast first paint, slow largest paint — is a
+classic symptom of the LCP element being invisible at first render and only becoming visible
+once JavaScript runs.
+
+Found it: the homepage `Hero` component wrapped its H1 (almost certainly the single largest
+element on the page) in Framer Motion with `initial={{ opacity: 0 }}`, so it rendered invisible
+in the static HTML and only faded in after React hydrated and the animation library executed —
+adding seconds of delay on a throttled mobile connection, exactly where Lighthouse measures LCP.
+
+Fixed by rendering the H1, eyebrow text, subtext, and search bar as plain elements with no
+entrance animation (verified the built HTML — no more `opacity:0` inline style on the H1). Kept
+a light fade-in only on the non-critical stats counters below the fold-line content. A
+codebase-wide check confirmed no other component has this `initial={{ opacity: 0 }}` pattern.
+
 ## Next steps (Milestone 9)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
