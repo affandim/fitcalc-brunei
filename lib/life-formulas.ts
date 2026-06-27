@@ -29,6 +29,46 @@ export function calculateDueDate(lastPeriodDate: Date, today: Date = new Date())
   return { dueDate, currentWeek, currentDay, trimester };
 }
 
+/** Estimated conception date, working backwards from a known or expected due date. */
+export function calculateConceptionDate(dueDate: Date): Date {
+  const conception = new Date(dueDate);
+  conception.setDate(conception.getDate() - 266);
+  return conception;
+}
+
+export interface OvulationResult {
+  ovulationDate: Date;
+  fertileWindowStart: Date;
+  fertileWindowEnd: Date;
+}
+
+/** Estimated ovulation date and fertile window from last period date and average cycle length. */
+export function calculateOvulation(lastPeriodDate: Date, cycleLengthDays: number): OvulationResult {
+  const ovulationDate = new Date(lastPeriodDate);
+  ovulationDate.setDate(ovulationDate.getDate() + (cycleLengthDays - 14));
+
+  const fertileWindowStart = new Date(ovulationDate);
+  fertileWindowStart.setDate(fertileWindowStart.getDate() - 5);
+
+  const fertileWindowEnd = new Date(ovulationDate);
+  fertileWindowEnd.setDate(fertileWindowEnd.getDate() + 1);
+
+  return { ovulationDate, fertileWindowStart, fertileWindowEnd };
+}
+
+export type Trimester = 1 | 2 | 3;
+
+const pregnancyCalorieBonus: Record<Trimester, number> = {
+  1: 0,
+  2: 340,
+  3: 450,
+};
+
+/** Additional daily calories recommended during pregnancy, on top of pre-pregnancy TDEE, by trimester. */
+export function calculatePregnancyCalories(prePregnancyTdee: number, trimester: Trimester): number {
+  return prePregnancyTdee + pregnancyCalorieBonus[trimester];
+}
+
 /* ------------------------ Pregnancy Weight Gain ------------------------ */
 
 export interface WeightGainRange {
@@ -54,6 +94,54 @@ export function predictAdultHeight(fatherHeightCm: number, motherHeightCm: numbe
   return gender === "boy"
     ? (fatherHeightCm + motherHeightCm + 13) / 2
     : (fatherHeightCm + motherHeightCm - 13) / 2;
+}
+
+export interface ChildBmiResult {
+  bmi: number;
+  category: "Underweight" | "Healthy weight" | "Overweight" | "Obese";
+}
+
+/**
+ * Simplified child BMI categorization. Real pediatric assessment uses
+ * age- and sex-specific percentile growth charts (CDC/WHO), not fixed
+ * adult-style cutoffs — this is a rough estimate only, clearly flagged as
+ * such in the UI, and not a substitute for a pediatrician's growth chart
+ * assessment.
+ */
+export function calculateChildBmi(heightCm: number, weightKg: number): ChildBmiResult {
+  const heightM = heightCm / 100;
+  const bmi = weightKg / (heightM * heightM);
+
+  let category: ChildBmiResult["category"];
+  if (bmi < 14) category = "Underweight";
+  else if (bmi < 18) category = "Healthy weight";
+  else if (bmi < 21) category = "Overweight";
+  else category = "Obese";
+
+  return { bmi, category };
+}
+
+/** Height growth velocity in cm/year, from two measurements taken months apart. */
+export function calculateHeightVelocity(height1Cm: number, height2Cm: number, monthsBetween: number): number {
+  const years = monthsBetween / 12;
+  return (height2Cm - height1Cm) / years;
+}
+
+export interface SleepRange {
+  minHours: number;
+  maxHours: number;
+  label: string;
+}
+
+/** AASM/National Sleep Foundation recommended sleep ranges by age band. */
+export function calculateSleepNeeds(ageYears: number): SleepRange {
+  if (ageYears < 1) return { minHours: 12, maxHours: 16, label: "Infant" };
+  if (ageYears < 3) return { minHours: 11, maxHours: 14, label: "Toddler" };
+  if (ageYears < 6) return { minHours: 10, maxHours: 13, label: "Preschooler" };
+  if (ageYears < 13) return { minHours: 9, maxHours: 12, label: "School-age child" };
+  if (ageYears < 18) return { minHours: 8, maxHours: 10, label: "Teenager" };
+  if (ageYears < 65) return { minHours: 7, maxHours: 9, label: "Adult" };
+  return { minHours: 7, maxHours: 8, label: "Older adult" };
 }
 
 /* ------------------------ Child Calorie Needs ------------------------ */
@@ -159,4 +247,32 @@ export function calculateTestScore(correctAnswers: number, totalQuestions: numbe
   else if (percentage >= 60) letterGrade = "D";
   else letterGrade = "F";
   return { percentage, letterGrade };
+}
+
+/* ------------------------ Weighted Average Grade ------------------------ */
+
+export interface WeightedGradeItem {
+  scorePercent: number;
+  weightPercent: number;
+}
+
+/** Weighted average across assignments/categories with different weight percentages. */
+export function calculateWeightedGrade(items: WeightedGradeItem[]): number {
+  const totalWeight = items.reduce((sum, i) => sum + i.weightPercent, 0);
+  if (totalWeight === 0) return 0;
+  const weightedSum = items.reduce((sum, i) => sum + i.scorePercent * i.weightPercent, 0);
+  return weightedSum / totalWeight;
+}
+
+/* ------------------------ Attendance Percentage ------------------------ */
+
+export interface AttendanceResult {
+  percentage: number;
+  meetsRequirement: boolean;
+}
+
+/** Attendance percentage against a required minimum threshold (commonly 75-80% for many institutions). */
+export function calculateAttendance(daysAttended: number, totalDays: number, requiredPercent = 75): AttendanceResult {
+  const percentage = totalDays === 0 ? 0 : (daysAttended / totalDays) * 100;
+  return { percentage, meetsRequirement: percentage >= requiredPercent };
 }

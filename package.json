@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "postbuild": "next-sitemap",
-    "test": "vitest run"
+    "test": "vitest run",
+    "submit:indexnow": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",

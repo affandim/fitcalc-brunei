@@ -433,6 +433,86 @@ export const calculators: CalculatorMeta[] = [
       id: { title: "Konverter Penyimpanan Data", shortDescription: "Konversi antara KB, MB, GB, dan TB." },
     },
   },
+  {
+    slug: "conception-date-calculator", title: "Conception Date Calculator", shortDescription: "Estimate when conception likely occurred.",
+    category: "pregnancy", icon: "Baby",
+    translations: {
+      "ms-bn": { title: "Kalkulator Tarikh Konsepsi", shortDescription: "Anggarkan bila konsepsi mungkin berlaku." },
+      id: { title: "Kalkulator Tanggal Konsepsi", shortDescription: "Perkirakan kapan konsepsi kemungkinan terjadi." },
+    },
+  },
+  {
+    slug: "ovulation-calculator", title: "Ovulation Calculator", shortDescription: "Estimate your fertile window and ovulation day.",
+    category: "pregnancy", icon: "Baby", popular: true,
+    translations: {
+      "ms-bn": { title: "Kalkulator Ovulasi", shortDescription: "Anggarkan tempoh subur dan hari ovulasi anda." },
+      id: { title: "Kalkulator Ovulasi", shortDescription: "Perkirakan masa subur dan hari ovulasi Anda." },
+    },
+  },
+  {
+    slug: "pregnancy-calorie-calculator", title: "Pregnancy Calorie Calculator", shortDescription: "Extra daily calories needed by trimester.",
+    category: "pregnancy", icon: "Flame",
+    translations: {
+      "ms-bn": { title: "Kalkulator Kalori Semasa Hamil", shortDescription: "Kalori tambahan harian mengikut trimester." },
+      id: { title: "Kalkulator Kalori Hamil", shortDescription: "Kalori tambahan harian sesuai trimester." },
+    },
+  },
+  {
+    slug: "child-bmi-calculator", title: "Child BMI Calculator", shortDescription: "A simplified BMI estimate for children.",
+    category: "children", icon: "HeartPulse",
+    translations: {
+      "ms-bn": { title: "Kalkulator BMI Kanak-kanak", shortDescription: "Anggaran BMI ringkas untuk kanak-kanak." },
+      id: { title: "Kalkulator BMI Anak", shortDescription: "Perkiraan BMI sederhana untuk anak-anak." },
+    },
+  },
+  {
+    slug: "height-velocity-calculator", title: "Child Height Velocity Calculator", shortDescription: "Growth rate in cm/year between two measurements.",
+    category: "children", icon: "Ruler",
+    translations: {
+      "ms-bn": { title: "Kalkulator Kadar Pertumbuhan Tinggi", shortDescription: "Kadar pertumbuhan cm/tahun antara dua ukuran." },
+      id: { title: "Kalkulator Laju Pertumbuhan Tinggi", shortDescription: "Laju pertumbuhan cm/tahun antara dua pengukuran." },
+    },
+  },
+  {
+    slug: "sleep-needs-calculator", title: "Sleep Needs Calculator", shortDescription: "Recommended sleep hours by age.",
+    category: "children", icon: "Activity", popular: true,
+    translations: {
+      "ms-bn": { title: "Kalkulator Keperluan Tidur", shortDescription: "Jam tidur disyorkan mengikut umur." },
+      id: { title: "Kalkulator Kebutuhan Tidur", shortDescription: "Jam tidur yang disarankan sesuai usia." },
+    },
+  },
+  {
+    slug: "anion-gap-calculator", title: "Anion Gap Calculator", shortDescription: "Serum anion gap from sodium, chloride and bicarbonate.",
+    category: "medical", icon: "Stethoscope",
+    translations: {
+      "ms-bn": { title: "Kalkulator Jurang Anion", shortDescription: "Jurang anion serum daripada natrium, klorida dan bikarbonat." },
+      id: { title: "Kalkulator Anion Gap", shortDescription: "Anion gap serum dari natrium, klorida, dan bikarbonat." },
+    },
+  },
+  {
+    slug: "blood-volume-calculator", title: "Estimated Blood Volume Calculator", shortDescription: "Estimate total blood volume from bodyweight.",
+    category: "medical", icon: "Stethoscope",
+    translations: {
+      "ms-bn": { title: "Kalkulator Anggaran Jumlah Darah", shortDescription: "Anggarkan jumlah darah daripada berat badan." },
+      id: { title: "Kalkulator Estimasi Volume Darah", shortDescription: "Perkirakan total volume darah dari berat badan." },
+    },
+  },
+  {
+    slug: "weighted-grade-calculator", title: "Weighted Average Grade Calculator", shortDescription: "Combine assignment scores with different weights.",
+    category: "education", icon: "GraduationCap",
+    translations: {
+      "ms-bn": { title: "Kalkulator Gred Purata Berwajaran", shortDescription: "Gabungkan markah tugasan dengan wajaran berbeza." },
+      id: { title: "Kalkulator Nilai Rata-Rata Berbobot", shortDescription: "Gabungkan nilai tugas dengan bobot berbeda." },
+    },
+  },
+  {
+    slug: "attendance-calculator", title: "Attendance Percentage Calculator", shortDescription: "Check if you meet a minimum attendance requirement.",
+    category: "education", icon: "GraduationCap",
+    translations: {
+      "ms-bn": { title: "Kalkulator Peratusan Kehadiran", shortDescription: "Semak sama ada anda memenuhi keperluan kehadiran minimum." },
+      id: { title: "Kalkulator Persentase Kehadiran", shortDescription: "Periksa apakah Anda memenuhi syarat kehadiran minimum." },
+    },
+  },
 ];
 
 export function getCalculatorsByCategory(category: string) {

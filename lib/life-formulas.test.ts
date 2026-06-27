@@ -9,6 +9,14 @@ import {
   calculateGpa,
   calculateStudyPlan,
   calculateTestScore,
+  calculateConceptionDate,
+  calculateOvulation,
+  calculatePregnancyCalories,
+  calculateChildBmi,
+  calculateHeightVelocity,
+  calculateSleepNeeds,
+  calculateWeightedGrade,
+  calculateAttendance,
 } from "@/lib/life-formulas";
 
 describe("calculateDueDate", () => {
@@ -106,5 +114,80 @@ describe("calculateTestScore", () => {
 
   it("handles zero total questions without dividing by zero", () => {
     expect(calculateTestScore(0, 0).percentage).toBe(0);
+  });
+});
+
+describe("calculateConceptionDate", () => {
+  it("subtracts 266 days from the due date", () => {
+    const due = new Date("2026-10-08");
+    const conception = calculateConceptionDate(due);
+    const expected = new Date("2026-10-08");
+    expected.setDate(expected.getDate() - 266);
+    expect(conception.toDateString()).toBe(expected.toDateString());
+  });
+});
+
+describe("calculateOvulation", () => {
+  it("estimates ovulation 14 days before the next period", () => {
+    const lmp = new Date("2026-01-01");
+    const result = calculateOvulation(lmp, 28);
+    const expectedOvulation = new Date("2026-01-01");
+    expectedOvulation.setDate(expectedOvulation.getDate() + 14);
+    expect(result.ovulationDate.toDateString()).toBe(expectedOvulation.toDateString());
+    expect(result.fertileWindowStart.getTime()).toBeLessThan(result.ovulationDate.getTime());
+    expect(result.fertileWindowEnd.getTime()).toBeGreaterThan(result.ovulationDate.getTime());
+  });
+});
+
+describe("calculatePregnancyCalories", () => {
+  it("adds the correct bonus per trimester", () => {
+    expect(calculatePregnancyCalories(2000, 1)).toBe(2000);
+    expect(calculatePregnancyCalories(2000, 2)).toBe(2340);
+    expect(calculatePregnancyCalories(2000, 3)).toBe(2450);
+  });
+});
+
+describe("calculateChildBmi", () => {
+  it("categorizes a child's BMI across the simplified bands", () => {
+    expect(calculateChildBmi(110, 16).category).toBe("Underweight");
+    expect(calculateChildBmi(110, 20).category).toBe("Healthy weight");
+    expect(calculateChildBmi(110, 27).category).toBe("Obese");
+  });
+});
+
+describe("calculateHeightVelocity", () => {
+  it("computes growth rate in cm/year", () => {
+    const rate = calculateHeightVelocity(100, 106, 12);
+    expect(rate).toBeCloseTo(6, 5);
+  });
+});
+
+describe("calculateSleepNeeds", () => {
+  it("returns appropriate ranges across age bands", () => {
+    expect(calculateSleepNeeds(0.5).label).toBe("Infant");
+    expect(calculateSleepNeeds(10).label).toBe("School-age child");
+    expect(calculateSleepNeeds(30).label).toBe("Adult");
+    expect(calculateSleepNeeds(70).label).toBe("Older adult");
+  });
+});
+
+describe("calculateWeightedGrade", () => {
+  it("computes a weight-adjusted average", () => {
+    const result = calculateWeightedGrade([
+      { scorePercent: 90, weightPercent: 60 },
+      { scorePercent: 70, weightPercent: 40 },
+    ]);
+    expect(result).toBeCloseTo(82, 5);
+  });
+
+  it("returns 0 when total weight is zero", () => {
+    expect(calculateWeightedGrade([])).toBe(0);
+  });
+});
+
+describe("calculateAttendance", () => {
+  it("flags whether the attendance requirement is met", () => {
+    expect(calculateAttendance(80, 100, 75).meetsRequirement).toBe(true);
+    expect(calculateAttendance(70, 100, 75).meetsRequirement).toBe(false);
   });
 });

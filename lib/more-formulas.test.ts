@@ -8,6 +8,8 @@ import {
   calculateFiberTarget,
   calculateSugarLimit,
   calculateAlcoholCalories,
+  calculateAnionGap,
+  calculateBloodVolume,
 } from "@/lib/more-formulas";
 
 describe("calculateBai", () => {
@@ -70,5 +72,22 @@ describe("calculateAlcoholCalories", () => {
   it("scales linearly with quantity", () => {
     expect(calculateAlcoholCalories("beer", 2)).toBe(300);
     expect(calculateAlcoholCalories("wine", 1)).toBe(125);
+  });
+});
+
+describe("calculateAnionGap", () => {
+  it("categorizes normal, low and high anion gap correctly", () => {
+    expect(calculateAnionGap(140, 104, 24).category).toBe("Normal");
+    expect(calculateAnionGap(140, 110, 28).category).toBe("Low");
+    expect(calculateAnionGap(140, 95, 20).category).toBe("High");
+  });
+});
+
+describe("calculateBloodVolume", () => {
+  it("uses different ml/kg factors for men and women", () => {
+    const male = calculateBloodVolume(70, "male");
+    const female = calculateBloodVolume(70, "female");
+    expect(male).toBeGreaterThan(female);
+    expect(male).toBeCloseTo(5.25, 5);
   });
 });

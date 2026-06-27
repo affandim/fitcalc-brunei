@@ -338,7 +338,45 @@ The site-wide Adsterra popunder script has been removed from `app/layout.tsx`. R
 ad placements: Top Banner, Mobile Banner, and In-Article (all Adsterra banner-format, deferred
 until idle — see the LCP fix sections above).
 
-## Next steps (Milestone 9)
+## Milestone 9 — 10 more calculators (64 total)
+
+Filled out the categories that had the fewest calculators:
+
+| Category | New calculators |
+|---|---|
+| Pregnancy (2→5) | Conception Date, Ovulation, Pregnancy Calorie |
+| Children (2→5) | Child BMI (simplified), Height Velocity, Sleep Needs |
+| Medical (3→5) | Anion Gap, Estimated Blood Volume |
+| Education (3→5) | Weighted Average Grade (dynamic rows), Attendance Percentage |
+
+All 9 categories now have at least 5 calculators. New tests bring the total to **82 passing unit
+tests** across 5 engine files.
+
+## IndexNow verification
+
+`public/dbb76988cb884396bfd2679a058d2eed.txt` hosts the IndexNow API key at the site root
+(`https://calckoo.com/dbb76988cb884396bfd2679a058d2eed.txt`), required by Bing/Yandex's
+IndexNow protocol for instant indexing notifications (push new/updated URLs instead of waiting
+for the next crawl).
+
+## IndexNow bulk submission script
+
+`scripts/submit-indexnow.mjs` finds every calculator, category, article, and static page URL
+(by reading the slugs straight out of the `data/*.ts` files — no extra dependency needed) and
+submits them all in one batch to IndexNow, which fans the notification out to Bing, Yandex, and
+other participating search engines for near-instant crawl requests instead of waiting on their
+normal schedule.
+
+```bash
+npm run submit:indexnow            # submit all URLs
+npm run submit:indexnow -- --dry-run   # just print the URL list without submitting
+```
+
+Run this locally (or in CI) after deploying new content — the sandbox this was built in can't
+reach `api.indexnow.org` directly, so the live submission itself hasn't been tested end-to-end,
+only the URL-discovery logic (confirmed finding all 86 current URLs correctly in dry-run mode).
+
+## Next steps (Milestone 10)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
 versions of the long-form articles/FAQs, real PWA icons, and og-image.png.

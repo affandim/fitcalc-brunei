@@ -132,3 +132,28 @@ export const drinkTypeLabels: Record<DrinkType, string> = {
 export function calculateAlcoholCalories(drinkType: DrinkType, quantity: number): number {
   return drinkCalories[drinkType] * quantity;
 }
+
+/* ------------------------------ Anion Gap ------------------------------ */
+
+export interface AnionGapResult {
+  anionGap: number;
+  category: "Low" | "Normal" | "High";
+}
+
+/** Serum anion gap = Na - (Cl + HCO3), a common metabolic lab calculation. */
+export function calculateAnionGap(sodium: number, chloride: number, bicarbonate: number): AnionGapResult {
+  const anionGap = sodium - (chloride + bicarbonate);
+  let category: AnionGapResult["category"];
+  if (anionGap < 8) category = "Low";
+  else if (anionGap <= 16) category = "Normal";
+  else category = "High";
+  return { anionGap, category };
+}
+
+/* ------------------------ Estimated Blood Volume ------------------------ */
+
+/** Estimated total blood volume in litres, using average ml/kg factors by gender. */
+export function calculateBloodVolume(weightKg: number, gender: Gender): number {
+  const mlPerKg = gender === "male" ? 75 : 65;
+  return (weightKg * mlPerKg) / 1000;
+}
