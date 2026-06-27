@@ -274,6 +274,25 @@ from a dedicated favicon source image — a polished, app-icon-style rounded-squ
 `public/icons/icon-192.png`, `icon-512.png`, and `apple-touch-icon.png` for sharper, more
 consistent results than the earlier crop from the rectangular logo.
 
+## Performance fixes (Core Web Vitals)
+
+A PageSpeed audit showed LCP at 4.7s and FCP at 2.7s (both in "poor"/"needs improvement"
+territory). Two real causes found and fixed:
+
+1. **Oversized logo `<Image>` props (the main culprit)** — the navbar logo's `width`/`height`
+   props were set to the source file's native resolution (726x200) instead of its actual
+   rendered CSS size (~36px tall). Next.js uses these props to generate its responsive srcset,
+   so it was fetching/serving the logo at up to **1920px wide** for an image displayed at 36px
+   tall. Fixed by setting `width={160} height={44}` to match actual display size — confirmed via
+   build output that requested widths dropped from 750/1920px to 256/384px (~80% less data).
+2. **Oversized source files** — `logo-icon.png` (used in the footer) was 850x680px at 494KB for
+   a 36px-tall icon. Resized both logo files down to ~3x their display resolution
+   (`logo-horizontal.png` → 435x120 @ 51KB, `logo-icon.png` → 150x120 @ 24KB).
+3. **Unused font weights/styles** — Fraunces was loading 6 font files (3 weights × normal/italic)
+   but a codebase-wide check found only `font-medium` (500) is ever actually used, and italic is
+   never used at all. Trimmed to a single weight/style, cutting 5 unnecessary font file
+   downloads.
+
 ## Next steps (Milestone 9)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated

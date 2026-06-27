@@ -39,8 +39,8 @@ export function Navbar() {
           <Image
             src="/logo-horizontal.png"
             alt={siteConfig.name}
-            width={726}
-            height={200}
+            width={160}
+            height={44}
             priority
             className="h-9 w-auto object-contain"
           />

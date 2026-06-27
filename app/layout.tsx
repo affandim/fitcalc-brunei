@@ -11,8 +11,8 @@ import { siteConfig } from "@/config/site";
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  weight: ["500"],
+  style: ["normal"],
 });
 
 const inter = Inter({
