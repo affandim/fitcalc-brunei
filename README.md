@@ -250,6 +250,30 @@ Both generated from SVG sources rendered via `sharp` (bundled with Next.js, no e
 dependency). Replace with designer-made versions anytime — the dimensions are already correct
 for their respective uses (OG/Twitter card preview, PWA install icon, iOS home screen icon).
 
+## Logo & brand assets update
+
+Replaced the text-based "Calckoo" wordmark with a real logo (user-provided artwork: a blue 3D
+"C"-shaped calculator mark + "Calckoo.com" wordmark). Processed into several derived assets:
+
+- `public/logo-horizontal.png` — icon + wordmark side-by-side, used in the navbar (light
+  background)
+- `public/logo-icon.png` — icon mark only, transparent background, used in the footer (dark
+  background, where the wordmark's navy text wouldn't be legible) and as the source for PWA icons
+- `public/og-image.png` — regenerated using the new logo, on the site's sand background
+- `public/icons/icon-192.png`, `icon-512.png`, `apple-touch-icon.png` — regenerated using the
+  icon mark
+
+Processed with Pillow: cropped the icon and wordmark from the source artwork, made the white
+background transparent, and composited each into the sizes/layouts each use case needs.
+
+## Favicon & PWA icon upgrade
+
+Replaced `app/favicon.ico` with a proper multi-resolution ICO (16/32/48/64/128/256px) generated
+from a dedicated favicon source image — a polished, app-icon-style rounded-square version of the
+"C"-calculator mark with built-in glow/shadow. The same source was also used to regenerate
+`public/icons/icon-192.png`, `icon-512.png`, and `apple-touch-icon.png` for sharper, more
+consistent results than the earlier crop from the rectangular logo.
+
 ## Next steps (Milestone 9)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated

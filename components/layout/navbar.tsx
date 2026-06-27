@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -34,11 +35,15 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex shrink-0 flex-col">
-          <span className="font-display text-lg font-medium tracking-tight">
-            Calc<span className="text-emerald">koo</span>
-          </span>
-          <span className="vital-tape mt-0.5 w-full origin-left scale-x-100 transition-transform duration-300 group-hover:scale-x-105" />
+        <Link href="/" className="group flex shrink-0 items-center">
+          <Image
+            src="/logo-horizontal.png"
+            alt={siteConfig.name}
+            width={726}
+            height={200}
+            priority
+            className="h-9 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden flex-1 items-center gap-1 lg:flex">

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { AtSign, Camera, Share2 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { useLocale } from "@/lib/i18n/locale-provider";
@@ -14,9 +15,12 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <span className="font-display text-xl">
-              Calc<span className="text-mint">koo</span>
-            </span>
+            <div className="flex items-center gap-2">
+              <Image src="/logo-icon.png" alt="" width={36} height={29} className="h-9 w-auto object-contain" />
+              <span className="font-display text-xl text-sand">
+                Calc<span className="text-mint">koo</span>
+              </span>
+            </div>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-sand/70">
               {siteConfig.description}
             </p>
