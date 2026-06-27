@@ -332,6 +332,12 @@ client-side, once idle.
 (The Indonesian Lighthouse report also flagged a single domain redirect adding ~124ms — this is
 a Vercel domain-level www/non-www redirect, not something fixable in the codebase.)
 
+## Popunder removed
+
+The site-wide Adsterra popunder script has been removed from `app/layout.tsx`. Remaining active
+ad placements: Top Banner, Mobile Banner, and In-Article (all Adsterra banner-format, deferred
+until idle — see the LCP fix sections above).
+
 ## Next steps (Milestone 9)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
