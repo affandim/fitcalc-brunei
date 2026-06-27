@@ -310,6 +310,28 @@ entrance animation (verified the built HTML — no more `opacity:0` inline style
 a light fade-in only on the non-critical stats counters below the fold-line content. A
 codebase-wide check confirmed no other component has this `initial={{ opacity: 0 }}` pattern.
 
+## LCP fix #2 — Adsterra ad iframes were competing in the critical render path
+
+A detailed Lighthouse trace (after the Hero fix above) pinpointed the H1 as the confirmed LCP
+element, with "render delay" accounting for 2,310ms of the 3.9s LCP — meaning the text itself
+wasn't blocked by a resource, something else was keeping the browser too busy to paint it. The
+trace's critical request chain showed two Adsterra `invoke.js` scripts (1.7s+ each) loading
+*during the same window*, and Lighthouse explicitly suggested preconnecting to
+`highperformanceformat.com` to save ~90ms of LCP — confirming the ad scripts were the cause.
+
+Root cause: `TopBannerAd` and `MobileBannerAd` on the homepage rendered their ad iframe
+immediately on mount, with no delay — competing for network/CPU with the critical render path
+even though the ad content itself loads inside an isolated iframe.
+
+Fixed in `components/ads/adsterra-banner.tsx`: the iframe (and its `invoke.js` request) now only
+mounts after `requestIdleCallback` fires (falling back to a 200ms timeout), keeping it out of
+the way until the browser has finished the critical rendering work. Verified the built HTML no
+longer contains the ad script at all in the initial server-rendered markup — it's added later,
+client-side, once idle.
+
+(The Indonesian Lighthouse report also flagged a single domain redirect adding ~124ms — this is
+a Vercel domain-level www/non-www redirect, not something fixable in the codebase.)
+
 ## Next steps (Milestone 9)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
