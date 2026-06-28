@@ -6,6 +6,7 @@ import { LocaleProvider } from "@/lib/i18n/locale-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { siteConfig } from "@/config/site";
+import { DelayedPopunder } from "@/components/ads/delayed-popunder";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -110,6 +111,11 @@ export default function RootLayout({
             <Footer />
           </LocaleProvider>
         </ThemeProvider>
+        {/* Adsterra popunder — only loads after the visitor's 1st click, so it fires on their 2nd click instead of immediately. */}
+        <DelayedPopunder
+          src="https://pl29905761.effectivecpmnetwork.com/1a/c4/7b/1ac47bd9955c7ab04386f9989762aafc.js"
+          armAfterClicks={1}
+        />
       </body>
     </html>
   );

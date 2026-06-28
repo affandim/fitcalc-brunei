@@ -376,6 +376,23 @@ Run this locally (or in CI) after deploying new content — the sandbox this was
 reach `api.indexnow.org` directly, so the live submission itself hasn't been tested end-to-end,
 only the URL-discovery logic (confirmed finding all 86 current URLs correctly in dry-run mode).
 
+## Popunder — now triggers on the 2nd click, not the 1st
+
+Re-added the Adsterra popunder, but via a new `components/ads/delayed-popunder.tsx` component
+instead of a plain `next/script` tag. Most popunder scripts attach their own click listener as
+soon as they load and fire on the very next click — meaning a naive setup fires on a visitor's
+*first* click on the page.
+
+`DelayedPopunder` counts clicks itself first, and only injects the actual ad script once the
+configured threshold (`armAfterClicks`, currently `1`) has passed — so the network's own
+listener isn't armed until after the visitor's first click, and fires on their second instead.
+Verified in the built HTML that no `<script src=".../1ac47bd9...">` tag exists in the initial
+markup — only the URL string appears, embedded as a React prop for client-side hydration; the
+actual script tag is injected by `DelayedPopunder`'s click handler at runtime.
+
+This also keeps it out of the critical render path (same LCP concern as the banner ads earlier),
+since nothing loads until after the page is already interactive and the visitor has clicked once.
+
 ## Next steps (Milestone 10)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
