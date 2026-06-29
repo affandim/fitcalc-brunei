@@ -438,16 +438,17 @@ access steps.
 
 ## Analytics
 
-No analytics was previously installed at all — there was no way to see traffic data. Added
-**Vercel Analytics** (`@vercel/analytics`), which requires no separate account or measurement ID
-since it's tied directly to the Vercel project. Once deployed, enable it in the Vercel dashboard
-(Project → Analytics tab → Enable) to start seeing page views, top pages, referrers, and
-countries.
+Two analytics tools now installed:
 
-Google Analytics (GA4) is not yet installed — it offers more detailed behavior data
-(time on page, event tracking, demographics) but requires the user to create their own GA4
-property and provide a Measurement ID. Worth adding alongside Vercel Analytics if deeper
-analysis is needed later.
+1. **Vercel Analytics** (`@vercel/analytics/next`) — no separate account needed, tied directly
+   to the Vercel project. Enable it in the Vercel dashboard (Project → Analytics tab → Enable).
+2. **Google Analytics (GA4)** — measurement ID `G-WNFRCTHPCS`. Installed via `next/script` with
+   `strategy="afterInteractive"` (Next.js's recommended approach for third-party analytics
+   scripts) rather than a raw `<script>` tag, so it loads without blocking the initial render.
+   Verified the gtag.js script and measurement ID both appear correctly in the built HTML.
+
+Together these give both a quick at-a-glance view (Vercel) and detailed behavioral data —
+demographics, event tracking, traffic sources — in GA4's own dashboard.
 
 ## Next steps (Milestone 11)
 
