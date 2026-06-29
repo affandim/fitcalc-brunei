@@ -7,6 +7,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { siteConfig } from "@/config/site";
 import { DelayedPopunder } from "@/components/ads/delayed-popunder";
+import { Analytics } from "@vercel/analytics/react";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -116,6 +117,7 @@ export default function RootLayout({
           src="https://pl29905761.effectivecpmnetwork.com/1a/c4/7b/1ac47bd9955c7ab04386f9989762aafc.js"
           armAfterClicks={1}
         />
+        <Analytics />
       </body>
     </html>
   );

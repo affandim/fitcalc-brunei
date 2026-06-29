@@ -436,6 +436,19 @@ well in the underlying search index (Bing, in Perplexity/Copilot's case) that th
 from — there's no separate "AI index" to submit to beyond standard SEO plus these two crawler-
 access steps.
 
+## Analytics
+
+No analytics was previously installed at all — there was no way to see traffic data. Added
+**Vercel Analytics** (`@vercel/analytics`), which requires no separate account or measurement ID
+since it's tied directly to the Vercel project. Once deployed, enable it in the Vercel dashboard
+(Project → Analytics tab → Enable) to start seeing page views, top pages, referrers, and
+countries.
+
+Google Analytics (GA4) is not yet installed — it offers more detailed behavior data
+(time on page, event tracking, demographics) but requires the user to create their own GA4
+property and provide a Measurement ID. Worth adding alongside Vercel Analytics if deeper
+analysis is needed later.
+
 ## Next steps (Milestone 11)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
