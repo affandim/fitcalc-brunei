@@ -17,6 +17,11 @@ import {
   calculateSleepNeeds,
   calculateWeightedGrade,
   calculateAttendance,
+  predictMenstrualCycle,
+  calculatePregnancyTestTiming,
+  calculateIvfDueDate,
+  calculateImplantationWindow,
+  convertPregnancyWeeksToMonths,
 } from "@/lib/life-formulas";
 
 describe("calculateDueDate", () => {
@@ -144,6 +149,67 @@ describe("calculatePregnancyCalories", () => {
     expect(calculatePregnancyCalories(2000, 1)).toBe(2000);
     expect(calculatePregnancyCalories(2000, 2)).toBe(2340);
     expect(calculatePregnancyCalories(2000, 3)).toBe(2450);
+  });
+});
+
+describe("predictMenstrualCycle", () => {
+  it("predicts next period, following period, and ovulation correctly", () => {
+    const lmp = new Date("2026-01-01");
+    const result = predictMenstrualCycle(lmp, 28);
+
+    const expectedNext = new Date("2026-01-29");
+    expect(result.nextPeriodDate.toDateString()).toBe(expectedNext.toDateString());
+
+    const expectedFollowing = new Date("2026-02-26");
+    expect(result.followingPeriodDate.toDateString()).toBe(expectedFollowing.toDateString());
+
+    const expectedOvulation = new Date("2026-01-15");
+    expect(result.ovulationDate.toDateString()).toBe(expectedOvulation.toDateString());
+  });
+});
+
+describe("calculatePregnancyTestTiming", () => {
+  it("returns an earliest test date before the recommended test date", () => {
+    const lmp = new Date("2026-01-01");
+    const result = calculatePregnancyTestTiming(lmp, 28);
+    expect(result.earliestTestDate.getTime()).toBeLessThan(result.recommendedTestDate.getTime());
+  });
+});
+
+describe("calculateIvfDueDate", () => {
+  it("adds the correct number of days for day-3 vs day-5 transfers", () => {
+    const transfer = new Date("2026-03-01");
+    const day3 = calculateIvfDueDate(transfer, 3);
+    const day5 = calculateIvfDueDate(transfer, 5);
+
+    const expectedDay3 = new Date("2026-03-01");
+    expectedDay3.setDate(expectedDay3.getDate() + 263);
+    expect(day3.toDateString()).toBe(expectedDay3.toDateString());
+
+    const expectedDay5 = new Date("2026-03-01");
+    expectedDay5.setDate(expectedDay5.getDate() + 261);
+    expect(day5.toDateString()).toBe(expectedDay5.toDateString());
+  });
+});
+
+describe("calculateImplantationWindow", () => {
+  it("returns a window 6-10 days after ovulation", () => {
+    const ovulation = new Date("2026-01-15");
+    const result = calculateImplantationWindow(ovulation);
+
+    const expectedStart = new Date("2026-01-21");
+    const expectedEnd = new Date("2026-01-25");
+    expect(result.windowStart.toDateString()).toBe(expectedStart.toDateString());
+    expect(result.windowEnd.toDateString()).toBe(expectedEnd.toDateString());
+  });
+});
+
+describe("convertPregnancyWeeksToMonths", () => {
+  it("converts weeks to months and determines trimester", () => {
+    expect(convertPregnancyWeeksToMonths(8).trimester).toBe(1);
+    expect(convertPregnancyWeeksToMonths(20).trimester).toBe(2);
+    expect(convertPregnancyWeeksToMonths(30).trimester).toBe(3);
+    expect(convertPregnancyWeeksToMonths(40).months).toBeCloseTo(40 / 4.345, 5);
   });
 });
 

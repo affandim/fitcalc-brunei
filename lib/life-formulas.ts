@@ -69,6 +69,98 @@ export function calculatePregnancyCalories(prePregnancyTdee: number, trimester: 
   return prePregnancyTdee + pregnancyCalorieBonus[trimester];
 }
 
+/* ------------------------ Menstrual Cycle Prediction ------------------------ */
+
+export interface MenstrualCyclePrediction {
+  nextPeriodDate: Date;
+  followingPeriodDate: Date;
+  ovulationDate: Date;
+}
+
+/** Predicts the next period and ovulation dates from the last period start and average cycle length. */
+export function predictMenstrualCycle(lastPeriodDate: Date, cycleLengthDays: number): MenstrualCyclePrediction {
+  const nextPeriodDate = new Date(lastPeriodDate);
+  nextPeriodDate.setDate(nextPeriodDate.getDate() + cycleLengthDays);
+
+  const followingPeriodDate = new Date(nextPeriodDate);
+  followingPeriodDate.setDate(followingPeriodDate.getDate() + cycleLengthDays);
+
+  const ovulationDate = new Date(lastPeriodDate);
+  ovulationDate.setDate(ovulationDate.getDate() + (cycleLengthDays - 14));
+
+  return { nextPeriodDate, followingPeriodDate, ovulationDate };
+}
+
+/* ------------------------ Pregnancy Test Timing ------------------------ */
+
+export interface PregnancyTestTiming {
+  earliestTestDate: Date;
+  recommendedTestDate: Date;
+}
+
+/**
+ * Earliest a sensitive early test might detect pregnancy (~10 days post-ovulation), and the
+ * more reliable date to test (the day of the missed period).
+ */
+export function calculatePregnancyTestTiming(lastPeriodDate: Date, cycleLengthDays: number): PregnancyTestTiming {
+  const ovulationDate = new Date(lastPeriodDate);
+  ovulationDate.setDate(ovulationDate.getDate() + (cycleLengthDays - 14));
+
+  const earliestTestDate = new Date(ovulationDate);
+  earliestTestDate.setDate(earliestTestDate.getDate() + 10);
+
+  const recommendedTestDate = new Date(lastPeriodDate);
+  recommendedTestDate.setDate(recommendedTestDate.getDate() + cycleLengthDays);
+
+  return { earliestTestDate, recommendedTestDate };
+}
+
+/* ------------------------ IVF Due Date ------------------------ */
+
+export type EmbryoTransferDay = 3 | 5;
+
+/** Due date from an IVF embryo transfer date, by transfer day (cleavage-stage day 3, or blastocyst day 5). */
+export function calculateIvfDueDate(transferDate: Date, embryoDay: EmbryoTransferDay): Date {
+  const daysToAdd = embryoDay === 5 ? 261 : 263;
+  const dueDate = new Date(transferDate);
+  dueDate.setDate(dueDate.getDate() + daysToAdd);
+  return dueDate;
+}
+
+/* ------------------------ Implantation Window ------------------------ */
+
+export interface ImplantationWindow {
+  windowStart: Date;
+  windowEnd: Date;
+}
+
+/** Implantation typically occurs 6-10 days after ovulation. */
+export function calculateImplantationWindow(ovulationDate: Date): ImplantationWindow {
+  const windowStart = new Date(ovulationDate);
+  windowStart.setDate(windowStart.getDate() + 6);
+
+  const windowEnd = new Date(ovulationDate);
+  windowEnd.setDate(windowEnd.getDate() + 10);
+
+  return { windowStart, windowEnd };
+}
+
+/* ------------------------ Pregnancy Weeks to Months ------------------------ */
+
+export interface PregnancyMonthsResult {
+  months: number;
+  trimester: Trimester;
+}
+
+/** Converts pregnancy weeks into an approximate month count (using 4.345 weeks/month average) and trimester. */
+export function convertPregnancyWeeksToMonths(weeks: number): PregnancyMonthsResult {
+  const months = weeks / 4.345;
+  let trimester: Trimester = 1;
+  if (weeks >= 27) trimester = 3;
+  else if (weeks >= 13) trimester = 2;
+  return { months, trimester };
+}
+
 /* ------------------------ Pregnancy Weight Gain ------------------------ */
 
 export interface WeightGainRange {

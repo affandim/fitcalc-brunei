@@ -6,6 +6,8 @@ interface PageMetadataOptions {
   description: string;
   /** Path starting with "/", e.g. "/calculators/bmi-calculator". Use "/" for the homepage. */
   path: string;
+  /** Optional override for the OG/Twitter image — defaults to the site-wide og-image.png. */
+  ogImage?: string;
 }
 
 /**
@@ -17,9 +19,10 @@ interface PageMetadataOptions {
  * full openGraph block, including its title, description and url. This
  * helper avoids that trap.
  */
-export function buildPageMetadata({ title, description, path }: PageMetadataOptions): Metadata {
+export function buildPageMetadata({ title, description, path, ogImage }: PageMetadataOptions): Metadata {
   const url = `${siteConfig.url}${path === "/" ? "" : path}`;
   const fullTitle = path === "/" ? title : `${title} | ${siteConfig.name}`;
+  const image = ogImage ?? siteConfig.ogImage;
 
   return {
     title,
@@ -31,13 +34,13 @@ export function buildPageMetadata({ title, description, path }: PageMetadataOpti
       title: fullTitle,
       description,
       siteName: siteConfig.name,
-      images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
+      images: [{ url: image, width: 1200, height: 630, alt: fullTitle }],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [siteConfig.ogImage],
+      images: [image],
     },
   };
 }

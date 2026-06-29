@@ -513,6 +513,46 @@ export const calculators: CalculatorMeta[] = [
       id: { title: "Kalkulator Persentase Kehadiran", shortDescription: "Periksa apakah Anda memenuhi syarat kehadiran minimum." },
     },
   },
+  {
+    slug: "menstrual-cycle-calculator", title: "Menstrual Cycle Calculator", shortDescription: "Predict your next period and ovulation dates.",
+    category: "pregnancy", icon: "Baby", popular: true,
+    translations: {
+      "ms-bn": { title: "Kalkulator Kitaran Haid", shortDescription: "Ramalkan tarikh haid dan ovulasi seterusnya." },
+      id: { title: "Kalkulator Siklus Menstruasi", shortDescription: "Prediksi tanggal haid dan ovulasi berikutnya." },
+    },
+  },
+  {
+    slug: "pregnancy-test-calculator", title: "Pregnancy Test Calculator", shortDescription: "Find the earliest and most reliable day to test.",
+    category: "pregnancy", icon: "Baby",
+    translations: {
+      "ms-bn": { title: "Kalkulator Ujian Kehamilan", shortDescription: "Cari hari paling awal dan paling tepat untuk uji." },
+      id: { title: "Kalkulator Tes Kehamilan", shortDescription: "Temukan hari paling awal dan akurat untuk tes." },
+    },
+  },
+  {
+    slug: "ivf-due-date-calculator", title: "IVF Due Date Calculator", shortDescription: "Estimate your due date from an embryo transfer date.",
+    category: "pregnancy", icon: "Baby",
+    translations: {
+      "ms-bn": { title: "Kalkulator Tarikh Bersalin IVF", shortDescription: "Anggarkan tarikh bersalin daripada tarikh pemindahan embrio." },
+      id: { title: "Kalkulator Tanggal Lahir IVF", shortDescription: "Perkirakan tanggal lahir dari tanggal transfer embrio." },
+    },
+  },
+  {
+    slug: "implantation-calculator", title: "Implantation Calculator", shortDescription: "Estimate your implantation window after ovulation.",
+    category: "pregnancy", icon: "Baby",
+    translations: {
+      "ms-bn": { title: "Kalkulator Implantasi", shortDescription: "Anggarkan tempoh implantasi selepas ovulasi." },
+      id: { title: "Kalkulator Implantasi", shortDescription: "Perkirakan jendela implantasi setelah ovulasi." },
+    },
+  },
+  {
+    slug: "pregnancy-weeks-to-months-calculator", title: "Pregnancy Weeks to Months Calculator", shortDescription: "Convert pregnancy weeks into months and trimester.",
+    category: "pregnancy", icon: "Baby",
+    translations: {
+      "ms-bn": { title: "Penukar Minggu ke Bulan Hamil", shortDescription: "Tukar minggu hamil kepada bulan dan trimester." },
+      id: { title: "Konverter Minggu ke Bulan Hamil", shortDescription: "Konversi minggu hamil ke bulan dan trimester." },
+    },
+  },
 ];
 
 export function getCalculatorsByCategory(category: string) {

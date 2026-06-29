@@ -10,6 +10,8 @@ export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
 }
 
+import { siteConfig } from "@/config/site";
+
 export async function generateMetadata({ params }: { params: PageParams }): Promise<Metadata> {
   const { slug } = await params;
   const category = categories.find((c) => c.slug === slug);
@@ -18,6 +20,7 @@ export async function generateMetadata({ params }: { params: PageParams }): Prom
     title: `${category.title} Calculators`,
     description: category.description,
     path: `/category/${category.slug}`,
+    ogImage: `${siteConfig.url}/og/og-${category.slug}.png`,
   });
 }
 

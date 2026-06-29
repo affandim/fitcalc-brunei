@@ -453,7 +453,42 @@ JavaScript never sees it — even though it works fine for real browser visitors
 initial server-rendered HTML — verified the script appears in the raw build output, and Google's
 verification subsequently passed (stream ID `15167620347` confirmed active).
 
-## Next steps (Milestone 11)
+## Milestone 11 — 5 more pregnancy & fertility calculators (69 total)
+
+Pregnancy category expanded from 5 to 10 calculators:
+
+| Calculator | What it does |
+|---|---|
+| Menstrual Cycle Calculator | Predicts next period, following period, and ovulation date |
+| Pregnancy Test Calculator | Earliest possible vs. most reliable day to test |
+| IVF Due Date Calculator | Due date from embryo transfer date (day-3 or day-5) |
+| Implantation Calculator | Estimated implantation window (6-10 days post-ovulation) |
+| Pregnancy Weeks to Months Calculator | Converts weeks pregnant into months + trimester |
+
+New formula tests bring the total to **87 passing unit tests**.
+
+## Per-category OG images
+
+Each of the 9 categories now has its own distinct social-share preview image
+(`public/og/og-{category}.png`, 1200x630) instead of sharing the single site-wide
+`og-image.png`. Each one uses the same Calckoo logo and sand background, but with a
+category-specific accent color and a hand-drawn icon (heart for Health, dumbbell for Fitness,
+graduation cap for Education, etc.), the category title, description, and calculator count.
+
+Generated with a Python/Pillow script (`/home/claude/og-categories/generate.py` during
+development — not checked into the repo, but easy to recreate if more categories are added
+later: same template, swap title/description/count/color/icon-drawing-function per category).
+
+`lib/seo.ts`'s `buildPageMetadata` now accepts an optional `ogImage` override, and
+`app/category/[slug]/page.tsx` passes the matching `/og/og-{slug}.png` for its `generateMetadata`
+— verified in the build output that each category page's `og:image` tag points to its own
+distinct file.
+
+Calculator pages still use the single site-wide image for now — extending this same per-image
+treatment to all 69 calculator pages (likely grouped by category rather than 69 unique images)
+is a reasonable next step if needed.
+
+## Next steps (Milestone 12)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
 versions of the long-form articles/FAQs, real PWA icons, and og-image.png.
