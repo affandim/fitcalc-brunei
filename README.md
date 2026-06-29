@@ -393,7 +393,27 @@ actual script tag is injected by `DelayedPopunder`'s click handler at runtime.
 This also keeps it out of the critical render path (same LCP concern as the banner ads earlier),
 since nothing loads until after the page is already interactive and the visitor has clicked once.
 
-## Next steps (Milestone 10)
+## Milestone 10 — 10 new how-to articles (16 total)
+
+Added based on a user-supplied keyword list, all written as original how-to/search-style
+content, each linking to its most relevant calculator:
+
+1. How to Calculate BMI Correctly → BMI Calculator
+2. How Many Calories Do You Need to Lose Weight? → Calories Calculator
+3. How to Save Money for a House Down Payment → Savings Goal Calculator
+4. How to Calculate Your Daily Calorie Needs → TDEE Calculator
+5. How to Figure Out Your Ideal Body Weight → Ideal Weight Calculator
+6. How Much Should You Save Each Month? → Savings Goal Calculator
+7. How to Calculate Mortgage Payments Before Buying a Home → Loan EMI Calculator
+8. How to Create a Budget That Actually Works → Net Worth Calculator
+9. How to Calculate Your Body Fat Percentage → Body Fat Calculator
+10. How to Estimate Your Retirement Savings Goal → Compound Interest Calculator
+
+Content lives in `components/articles/article-content-3.tsx` and `article-content-4.tsx`,
+registered in `data/article-content-registry.tsx` — same pattern as the original 6 articles.
+Still English-only, consistent with the documented i18n scope decision.
+
+## Next steps (Milestone 11)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated
 versions of the long-form articles/FAQs, real PWA icons, and og-image.png.
