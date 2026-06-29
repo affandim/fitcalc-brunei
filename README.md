@@ -413,6 +413,29 @@ Content lives in `components/articles/article-content-3.tsx` and `article-conten
 registered in `data/article-content-registry.tsx` — same pattern as the original 6 articles.
 Still English-only, consistent with the documented i18n scope decision.
 
+## AI indexing / GEO setup
+
+Two changes to help AI assistants and AI-powered search (ChatGPT, Claude, Perplexity, Google AI
+Overviews, etc.) find, crawl, and cite Calckoo content:
+
+1. **`next-sitemap.config.js`** now explicitly allows the major AI crawlers in `robots.txt`
+   (GPTBot, ChatGPT-User, ClaudeBot, anthropic-ai, Claude-Web, PerplexityBot, Google-Extended,
+   Applebot-Extended, CCBot, Bytespider) — on top of the pre-existing wildcard `Allow: /` that
+   was already permitting them implicitly. Verified the generated `robots.txt` lists all 10
+   explicitly.
+2. **`public/llms.txt`** — an emerging convention (see llmstxt.org) similar to `robots.txt` but
+   aimed at LLMs: a single markdown file summarizing what the site is and linking every
+   calculator, grouped by category, so an AI system can understand the full site structure
+   without needing to crawl 86 individual pages. Auto-generatable from `data/calculators.ts` and
+   `data/categories.ts` (see the inline script used to build it — worth turning into a proper
+   `scripts/generate-llms-txt.mjs` once content stabilizes, similar to `submit-indexnow.mjs`).
+
+Note: getting *crawled* (covered above) is different from getting *cited* by an AI's live
+answers, which depends much more on content quality, originality, and the site already ranking
+well in the underlying search index (Bing, in Perplexity/Copilot's case) that the AI tool draws
+from — there's no separate "AI index" to submit to beyond standard SEO plus these two crawler-
+access steps.
+
 ## Next steps (Milestone 11)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated

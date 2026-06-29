@@ -1,0 +1,97 @@
+# Calckoo
+
+> Free, accurate health, fitness, nutrition, and finance calculators for a global audience, with a focus on Brunei and Southeast Asia.
+
+Calckoo provides 64+ free online calculators across health, fitness, nutrition, pregnancy, children, medical, finance, education, and unit conversion categories. Every calculator includes the underlying formula, an explanation of what the result means, and links to related tools. Site available in English, Bahasa Melayu Brunei, and Bahasa Indonesia (UI only; long-form articles are in English).
+
+## Calculators by category
+
+### Health
+- [BMI Calculator](https://calckoo.com/calculators/bmi-calculator): Check your Body Mass Index.
+- [Body Fat Calculator](https://calckoo.com/calculators/body-fat-calculator): Estimate your body fat percentage.
+- [Lean Body Mass Calculator](https://calckoo.com/calculators/lean-body-mass-calculator): Calculate mass excluding fat.
+- [Ideal Weight Calculator](https://calckoo.com/calculators/ideal-weight-calculator): Find your ideal body weight range.
+- [BMR Calculator](https://calckoo.com/calculators/bmr-calculator): Basal Metabolic Rate at rest.
+- [Waist to Height Ratio](https://calckoo.com/calculators/waist-to-height-ratio-calculator): A simple cardiovascular risk metric.
+- [Waist Hip Ratio Calculator](https://calckoo.com/calculators/waist-hip-ratio-calculator): Body fat distribution indicator.
+- [Body Adiposity Index Calculator](https://calckoo.com/calculators/bai-calculator): Estimate body fat % from hip and height alone.
+- [Body Frame Size Calculator](https://calckoo.com/calculators/frame-size-calculator): Find your body frame size from wrist circumference.
+
+### Fitness
+- [Muscle Mass Calculator](https://calckoo.com/calculators/muscle-mass-calculator): Estimate skeletal muscle mass.
+- [FFMI Calculator](https://calckoo.com/calculators/ffmi-calculator): Fat-Free Mass Index for athletes.
+- [Heart Rate Zone Calculator](https://calckoo.com/calculators/heart-rate-zone-calculator): Training zones for cardio workouts.
+- [Target Heart Rate Calculator](https://calckoo.com/calculators/target-heart-rate-calculator): Find your optimal training heart rate.
+- [Pace Calculator](https://calckoo.com/calculators/pace-calculator): Running and walking pace conversions.
+- [Running Calculator](https://calckoo.com/calculators/running-calculator): Estimate finish times and splits.
+- [Walking Calories Calculator](https://calckoo.com/calculators/walking-calories-calculator): Calories burned while walking.
+- [One Rep Max Calculator](https://calckoo.com/calculators/one-rep-max-calculator): Estimate your 1RM and training load percentages.
+- [Running Calories Calculator](https://calckoo.com/calculators/running-calories-calculator): Calories burned while running, by pace.
+- [Cycling Calories Calculator](https://calckoo.com/calculators/cycling-calories-calculator): Calories burned while cycling, by intensity.
+
+### Nutrition
+- [Calories Calculator](https://calckoo.com/calculators/calories-calculator): Daily calorie needs by goal.
+- [Protein Calculator](https://calckoo.com/calculators/protein-calculator): Daily protein target for your goals.
+- [Water Intake Calculator](https://calckoo.com/calculators/water-intake-calculator): How much water you should drink.
+- [TDEE Calculator](https://calckoo.com/calculators/tdee-calculator): Total Daily Energy Expenditure.
+- [Macro Calculator](https://calckoo.com/calculators/macro-calculator): Protein, carbs and fat split.
+- [Fiber Intake Calculator](https://calckoo.com/calculators/fiber-intake-calculator): Your recommended daily fiber target.
+- [Sugar Limit Calculator](https://calckoo.com/calculators/sugar-limit-calculator): Your daily added-sugar limit (AHA guideline).
+- [Alcohol Calories Calculator](https://calckoo.com/calculators/alcohol-calories-calculator): Calories from beer, wine and spirits.
+
+### Pregnancy
+- [Due Date Calculator](https://calckoo.com/calculators/due-date-calculator): Estimate your pregnancy due date.
+- [Pregnancy Weight Gain Calculator](https://calckoo.com/calculators/pregnancy-weight-gain-calculator): Recommended weight gain range during pregnancy.
+- [Conception Date Calculator](https://calckoo.com/calculators/conception-date-calculator): Estimate when conception likely occurred.
+- [Ovulation Calculator](https://calckoo.com/calculators/ovulation-calculator): Estimate your fertile window and ovulation day.
+- [Pregnancy Calorie Calculator](https://calckoo.com/calculators/pregnancy-calorie-calculator): Extra daily calories needed by trimester.
+
+### Children
+- [Child Height Predictor](https://calckoo.com/calculators/height-predictor-calculator): Predict your child's adult height.
+- [Child Calorie Needs Calculator](https://calckoo.com/calculators/child-calorie-calculator): Estimated daily calories for children 3-18.
+- [Child BMI Calculator](https://calckoo.com/calculators/child-bmi-calculator): A simplified BMI estimate for children.
+- [Child Height Velocity Calculator](https://calckoo.com/calculators/height-velocity-calculator): Growth rate in cm/year between two measurements.
+- [Sleep Needs Calculator](https://calckoo.com/calculators/sleep-needs-calculator): Recommended sleep hours by age.
+
+### Medical
+- [Body Surface Area Calculator](https://calckoo.com/calculators/body-surface-area-calculator): Estimate total skin surface area.
+- [Blood Pressure Category Calculator](https://calckoo.com/calculators/blood-pressure-calculator): Check your blood pressure category.
+- [Pulse Pressure & MAP Calculator](https://calckoo.com/calculators/pulse-pressure-calculator): Calculate pulse pressure and mean arterial pressure.
+- [Anion Gap Calculator](https://calckoo.com/calculators/anion-gap-calculator): Serum anion gap from sodium, chloride and bicarbonate.
+- [Estimated Blood Volume Calculator](https://calckoo.com/calculators/blood-volume-calculator): Estimate total blood volume from bodyweight.
+
+### Finance
+- [Loan EMI Calculator](https://calckoo.com/calculators/loan-emi-calculator): Monthly loan payments and total interest.
+- [Compound Interest Calculator](https://calckoo.com/calculators/compound-interest-calculator): Grow savings with compounding and contributions.
+- [Simple Interest Calculator](https://calckoo.com/calculators/simple-interest-calculator): Quick simple interest on a principal amount.
+- [Savings Goal Calculator](https://calckoo.com/calculators/savings-goal-calculator): Monthly savings needed to hit a target.
+- [Investment Return Calculator](https://calckoo.com/calculators/investment-return-calculator): Total and annualized investment returns.
+- [Tip Calculator](https://calckoo.com/calculators/tip-calculator): Split a bill with tip across any number of people.
+- [Discount Calculator](https://calckoo.com/calculators/discount-calculator): Find the final price and savings on a sale.
+- [Net Worth Calculator](https://calckoo.com/calculators/net-worth-calculator): Total assets minus total liabilities.
+- [Mortgage Affordability Calculator](https://calckoo.com/calculators/mortgage-affordability-calculator): How much home you can afford (28/36 rule).
+
+### Unit Converters
+- [Length Converter](https://calckoo.com/calculators/length-converter): Convert between metres, feet, miles and more.
+- [Weight Converter](https://calckoo.com/calculators/weight-converter): Convert between kg, lb, oz and stone.
+- [Temperature Converter](https://calckoo.com/calculators/temperature-converter): Convert between Celsius, Fahrenheit and Kelvin.
+- [Volume Converter](https://calckoo.com/calculators/volume-converter): Convert between litres, cups, gallons and more.
+- [Speed Converter](https://calckoo.com/calculators/speed-converter): Convert between km/h, mph and knots.
+- [Time Converter](https://calckoo.com/calculators/time-converter): Convert between seconds, hours, days and weeks.
+- [Area Converter](https://calckoo.com/calculators/area-converter): Convert between m², acres, hectares and more.
+- [Data Storage Converter](https://calckoo.com/calculators/data-storage-converter): Convert between KB, MB, GB and TB.
+
+### Education
+- [GPA Calculator](https://calckoo.com/calculators/gpa-calculator): Calculate your credit-weighted GPA.
+- [Study Time Planner](https://calckoo.com/calculators/study-time-calculator): Plan daily study hours before an exam.
+- [Test Score Calculator](https://calckoo.com/calculators/test-score-calculator): Percentage and letter grade from correct answers.
+- [Weighted Average Grade Calculator](https://calckoo.com/calculators/weighted-grade-calculator): Combine assignment scores with different weights.
+- [Attendance Percentage Calculator](https://calckoo.com/calculators/attendance-calculator): Check if you meet a minimum attendance requirement.
+
+## Articles
+- [All articles](https://calckoo.com/articles)
+
+## Other pages
+- [About](https://calckoo.com/about)
+- [Contact](https://calckoo.com/contact)
+- [Sitemap](https://calckoo.com/sitemap.xml)
