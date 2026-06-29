@@ -438,17 +438,20 @@ access steps.
 
 ## Analytics
 
-Two analytics tools now installed:
+Two analytics tools now installed and **verified working**:
 
 1. **Vercel Analytics** (`@vercel/analytics/next`) — no separate account needed, tied directly
    to the Vercel project. Enable it in the Vercel dashboard (Project → Analytics tab → Enable).
-2. **Google Analytics (GA4)** — measurement ID `G-WNFRCTHPCS`. Installed via `next/script` with
-   `strategy="afterInteractive"` (Next.js's recommended approach for third-party analytics
-   scripts) rather than a raw `<script>` tag, so it loads without blocking the initial render.
-   Verified the gtag.js script and measurement ID both appear correctly in the built HTML.
+2. **Google Analytics (GA4)** — measurement ID `G-WNFRCTHPCS`, stream confirmed live and
+   detected by Google.
 
-Together these give both a quick at-a-glance view (Vercel) and detailed behavioral data —
-demographics, event tracking, traffic sources — in GA4's own dashboard.
+GA4 initially failed Google's "tag detected" check after deploying with
+`strategy="afterInteractive"`. Root cause: that strategy injects the script client-side via JS
+*after* the initial render, so a simple checker that fetches raw HTML without executing
+JavaScript never sees it — even though it works fine for real browser visitors. Switched both
+`<Script>` tags to `strategy="beforeInteractive"`, which Next.js renders directly into the
+initial server-rendered HTML — verified the script appears in the raw build output, and Google's
+verification subsequently passed (stream ID `15167620347` confirmed active).
 
 ## Next steps (Milestone 11)
 
