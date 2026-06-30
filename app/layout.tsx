@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { siteConfig } from "@/config/site";
 import { DelayedPopunder } from "@/components/ads/delayed-popunder";
+import { SocialBarAd } from "@/components/ads/social-bar-ad";
 import { StickyBottomAd } from "@/components/ads/ad-slots";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -129,11 +130,12 @@ export default function RootLayout({
         </ThemeProvider>
         {/* Adsterra popunder — only loads after the visitor's 1st click, so it fires on their 2nd click instead of immediately. */}
         <DelayedPopunder
-          src="https://pl29905761.effectivecpmnetwork.com/1a/c4/7b/1ac47bd9955c7ab04386f9989762aafc.js"
+          src="https://pl30139184.effectivecpmnetwork.com/11/8e/bc/118ebc09071ba757a5ee6eb6b7e195e7.js"
           armAfterClicks={1}
         />
         <Analytics />
         <StickyBottomAd />
+        <SocialBarAd />
       </body>
     </html>
   );

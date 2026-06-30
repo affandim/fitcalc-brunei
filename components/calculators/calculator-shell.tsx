@@ -94,7 +94,7 @@ export function CalculatorShell({ calculator, children, article, faqs }: Calcula
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-10">
+      <div className="lg:grid lg:grid-cols-[1fr_200px] lg:gap-10">
         <div className="mx-auto w-full max-w-3xl lg:mx-0">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-foreground/50">

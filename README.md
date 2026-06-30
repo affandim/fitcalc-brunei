@@ -506,6 +506,55 @@ Both currently render their dashed placeholder (no Adsterra key assigned yet) �
 those ad units exist in the Adsterra dashboard, following the same pattern as the other 3 active
 placements.
 
+## All 5 Adsterra banner placements now active
+
+Sticky Bottom is now live too, at **468x60** (728x90 was unavailable for the same reason
+Sidebar's 300x250 was — Adsterra's dashboard had already locked those sizes from an earlier
+creation). Updated `StickyBottomAd` in `components/ads/ad-slots.tsx` to the real dimensions.
+
+Full active placement summary:
+
+| Slot | Size | Location |
+|---|---|---|
+| Top Banner | 728x90 | Homepage, desktop |
+| Mobile Banner | 320x50 | Homepage, mobile |
+| In-Article | 300x250 | All 69 calculator pages + 6 standalone articles |
+| Sidebar | 160x600 | All 69 calculator pages, sticky, desktop only |
+| Sticky Bottom | 468x60 | Every page, fixed to viewport bottom, desktop only |
+
+Plus the click-delayed Popunder (`components/ads/delayed-popunder.tsx`, fires on the visitor's
+2nd click). All Adsterra placements are deferred until the browser is idle, keeping them out of
+the critical render path established during the earlier LCP fixes.
+
+## Full Adsterra refresh after domain typo fix
+
+After fixing the "caclkoo.com" → "calckoo.com" typo in the Adsterra account, the user generated
+a complete fresh set of ad units. Several changes:
+
+1. **Replaced 3 existing keys** (Top Banner, In-Article, Mobile Banner) with new ones — the old
+   keys were potentially created while the account still had the misspelled domain, so they
+   were swapped for the freshly-generated, confirmed-correct-domain versions.
+2. **Sidebar (160x600) and Sticky Bottom (468x60)** keys were re-supplied identically to before
+   — left unchanged, since matching keys suggest those specific zones weren't affected by the
+   domain fix.
+3. **New formats added**:
+   - **Popunder** — script URL updated to the new one (old one fully removed; verified via
+     build output it no longer appears anywhere).
+   - **Native Banner** — new component `components/ads/native-banner-ad.tsx`, using Adsterra's
+     div+script pattern (no iframe isolation needed here, since this format doesn't rely on
+     `document.write`). Placed on the homepage between Popular Calculators and Category Grid.
+   - **Social Bar** — new component `components/ads/social-bar-ad.tsx`, a site-wide
+     self-rendering floating unit (similar mechanism to the popunder script), added to
+     `app/layout.tsx`. Both load only after the browser is idle, consistent with every other
+     Adsterra placement on the site, to stay out of the critical render path.
+   - **Smartlink** — a bare URL (not a script), which Adsterra typically expects to be opened by
+     a deliberate, clearly-labeled user action (e.g. a "Sponsored" button or link) rather than
+     auto-triggered. Not implemented yet — flagged for the user to decide where, if anywhere, a
+     clearly-labeled sponsored link would make sense, consistent with not implementing anything
+     that disguises an ad as calculator functionality.
+4. **Unused 160x300 banner key** (`acf5d804516d9b578586fffdb49070a8`) noted in
+   `adsterraKeys.unusedBanner160x300` but not yet assigned to a placement.
+
 ## Next steps (Milestone 12)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated

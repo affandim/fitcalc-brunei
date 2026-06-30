@@ -7,11 +7,24 @@ import { AdsterraBanner } from "@/components/ads/adsterra-banner";
  * automatically. Leave a slot as `null` to keep showing its placeholder.
  */
 const adsterraKeys = {
-  topBanner: "b04d6714c5e53838a9438b035e39dceb" as string | null,
-  sidebar: null as string | null,
-  inArticle: "ca6909fcb242b90c2067e0c82e0516ce" as string | null,
-  stickyBottom: null as string | null,
-  mobileBanner: "ab9382696e9ee31762c4c4938ef924a9" as string | null,
+  topBanner: "d4e9602741e15f3d8ff4381b9ff292a9" as string | null,
+  sidebar: "1bb835bb1dd5a3d8c50ee5eca4eecfb7" as string | null,
+  inArticle: "5c0fea97f3d95a8d83269d027e45fb4f" as string | null,
+  stickyBottom: "fe7822fb1da26d7e6444617eae3bed1a" as string | null,
+  mobileBanner: "a06620e9e5af6339a7774ff8eb6db0f3" as string | null,
+  /** 160x300 banner — created but not yet assigned to a placement on the site. */
+  unusedBanner160x300: "acf5d804516d9b578586fffdb49070a8" as string | null,
+};
+
+/** Native Banner — a different ad format (div + script, not an iframe). */
+export const nativeBannerConfig = {
+  key: "6c401fbd873a264982333eafa1bf4b44",
+  scriptSrc: "https://pl30139185.effectivecpmnetwork.com/6c401fbd873a264982333eafa1bf4b44/invoke.js",
+};
+
+/** Social Bar — a site-wide floating unit Adsterra renders itself once its script loads. */
+export const socialBarConfig = {
+  scriptSrc: "https://pl30139187.effectivecpmnetwork.com/7c/43/53/7c435343f8ae23b16f909f0defa1a9ee.js",
 };
 
 interface AdSlotProps {
@@ -52,11 +65,11 @@ export function TopBannerAd() {
 
 export function SidebarAd() {
   if (!adsterraKeys.sidebar) {
-    return <AdPlaceholder id="ad-sidebar" height={250} />;
+    return <AdPlaceholder id="ad-sidebar" height={600} />;
   }
   return (
     <div className="flex justify-center">
-      <AdsterraBanner adKey={adsterraKeys.sidebar} width={300} height={250} />
+      <AdsterraBanner adKey={adsterraKeys.sidebar} width={160} height={600} />
     </div>
   );
 }
@@ -76,13 +89,13 @@ export function StickyBottomAd() {
   if (!adsterraKeys.stickyBottom) {
     return (
       <div className="fixed inset-x-0 bottom-0 z-40 hidden border-t border-border bg-surface/95 backdrop-blur sm:block">
-        <AdPlaceholder id="ad-sticky-bottom" height={70} className="mx-auto max-w-4xl border-none bg-transparent" />
+        <AdPlaceholder id="ad-sticky-bottom" height={60} className="mx-auto max-w-4xl border-none bg-transparent" />
       </div>
     );
   }
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 hidden justify-center border-t border-border bg-surface/95 backdrop-blur sm:flex">
-      <AdsterraBanner adKey={adsterraKeys.stickyBottom} width={728} height={90} />
+      <AdsterraBanner adKey={adsterraKeys.stickyBottom} width={468} height={60} />
     </div>
   );
 }
