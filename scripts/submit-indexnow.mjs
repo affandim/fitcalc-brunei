@@ -21,7 +21,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 
 const HOST = "calckoo.com";
-const KEY = "dbb76988cb884396bfd2679a058d2eed";
+const KEY = "cc55e6583fb84bdc934bfaec35dd9759";
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const ENDPOINT = "https://api.indexnow.org/indexnow";
 
