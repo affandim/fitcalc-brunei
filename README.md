@@ -488,6 +488,24 @@ Calculator pages still use the single site-wide image for now — extending this
 treatment to all 69 calculator pages (likely grouped by category rather than 69 unique images)
 is a reasonable next step if needed.
 
+## Sidebar & Sticky Bottom ad placements added
+
+Two more ad slots are now actually placed in the layout (previously defined in
+`components/ads/ad-slots.tsx` but never rendered anywhere):
+
+- **Sidebar (300x250)** — `CalculatorShell` restructured from a single max-w-3xl column into a
+  `1fr / 300px` grid on large screens (`lg:`), with the sidebar ad sticky-positioned alongside
+  the calculator content as the page scrolls. Hidden entirely below `lg:` so it doesn't crowd
+  mobile layouts. All 69 calculator pages get this automatically since they all go through
+  `CalculatorShell`.
+- **Sticky Bottom (728x90)** — added to `app/layout.tsx`, so it appears site-wide (fixed to the
+  bottom of the viewport, same pattern as the existing top/mobile banners).
+
+Both currently render their dashed placeholder (no Adsterra key assigned yet) — fill in
+`adsterraKeys.sidebar` and `adsterraKeys.stickyBottom` in `components/ads/ad-slots.tsx` once
+those ad units exist in the Adsterra dashboard, following the same pattern as the other 3 active
+placements.
+
 ## Next steps (Milestone 12)
 
 Build out remaining content depth: 500+ SEO articles, unit converters (50+), translated

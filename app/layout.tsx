@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { siteConfig } from "@/config/site";
 import { DelayedPopunder } from "@/components/ads/delayed-popunder";
+import { StickyBottomAd } from "@/components/ads/ad-slots";
 import { Analytics } from "@vercel/analytics/next";
 
 const fraunces = Fraunces({
@@ -132,6 +133,7 @@ export default function RootLayout({
           armAfterClicks={1}
         />
         <Analytics />
+        <StickyBottomAd />
       </body>
     </html>
   );

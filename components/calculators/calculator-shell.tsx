@@ -12,7 +12,7 @@ import {
   localizedCategoryTitle,
 } from "@/lib/i18n/localize";
 import type { CalculatorMeta } from "@/types";
-import { InArticleAd } from "@/components/ads/ad-slots";
+import { InArticleAd, SidebarAd } from "@/components/ads/ad-slots";
 
 interface FaqItem {
   question: string;
@@ -84,7 +84,7 @@ export function CalculatorShell({ calculator, children, article, faqs }: Calcula
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -94,90 +94,101 @@ export function CalculatorShell({ calculator, children, article, faqs }: Calcula
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-foreground/50">
-        <Link href="/" className="hover:text-emerald">{t.calculator.home}</Link>
-        <ChevronRight size={12} />
-        <Link href={`/category/${calculator.category}`} className="hover:text-emerald">
-          {categoryLabel}
-        </Link>
-        <ChevronRight size={12} />
-        <span className="text-foreground/70">{title}</span>
-      </nav>
+      <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-10">
+        <div className="mx-auto w-full max-w-3xl lg:mx-0">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-foreground/50">
+            <Link href="/" className="hover:text-emerald">{t.calculator.home}</Link>
+            <ChevronRight size={12} />
+            <Link href={`/category/${calculator.category}`} className="hover:text-emerald">
+              {categoryLabel}
+            </Link>
+            <ChevronRight size={12} />
+            <span className="text-foreground/70">{title}</span>
+          </nav>
 
-      {/* Header */}
-      <div className="mt-4 flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <span className="text-xs font-medium uppercase tracking-wide text-emerald">
-            {categoryLabel}
-          </span>
-          <h1 className="font-display mt-1 text-3xl font-medium sm:text-4xl">
-            {title}
-          </h1>
-          <p className="mt-2 text-foreground/60">{description}</p>
-        </div>
-        <div className="flex gap-2">
-          <button
-            type="button"
-            onClick={handleShare}
-            aria-label="Share this calculator"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border hover:border-emerald hover:text-emerald"
-          >
-            <Share2 size={16} />
-          </button>
-          <button
-            type="button"
-            onClick={handlePrint}
-            aria-label="Print this result"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border hover:border-emerald hover:text-emerald"
-          >
-            <Printer size={16} />
-          </button>
-        </div>
-      </div>
-
-      {/* Calculator form + result */}
-      <div className="mt-8">{children}</div>
-
-      {/* Article */}
-      <div className="prose-fitcalc mt-16 border-t border-border pt-12">{article}</div>
-
-      {/* In-article ad */}
-      <div className="mt-10">
-        <InArticleAd />
-      </div>
-
-      {/* FAQ */}
-      <div className="mt-16 border-t border-border pt-12">
-        <h2 className="font-display text-2xl font-medium">{t.calculator.faqTitle}</h2>
-        <div className="mt-6 space-y-6">
-          {faqs.map((f) => (
-            <div key={f.question}>
-              <h3 className="font-medium">{f.question}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-foreground/65">{f.answer}</p>
+          {/* Header */}
+          <div className="mt-4 flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <span className="text-xs font-medium uppercase tracking-wide text-emerald">
+                {categoryLabel}
+              </span>
+              <h1 className="font-display mt-1 text-3xl font-medium sm:text-4xl">
+                {title}
+              </h1>
+              <p className="mt-2 text-foreground/60">{description}</p>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Related calculators */}
-      {related.length > 0 && (
-        <div className="mt-16 border-t border-border pt-12">
-          <h2 className="font-display text-2xl font-medium">{t.calculator.relatedCalculators}</h2>
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            {related.map((r) => (
-              <Link
-                key={r.slug}
-                href={`/calculators/${r.slug}`}
-                className="rounded-card border border-border p-4 text-sm transition-colors hover:border-emerald"
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={handleShare}
+                aria-label="Share this calculator"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border hover:border-emerald hover:text-emerald"
               >
-                <p className="font-medium">{localizedCalculatorTitle(r, locale)}</p>
-                <p className="mt-1 text-foreground/55">{localizedCalculatorDescription(r, locale)}</p>
-              </Link>
-            ))}
+                <Share2 size={16} />
+              </button>
+              <button
+                type="button"
+                onClick={handlePrint}
+                aria-label="Print this result"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border hover:border-emerald hover:text-emerald"
+              >
+                <Printer size={16} />
+              </button>
+            </div>
           </div>
+
+          {/* Calculator form + result */}
+          <div className="mt-8">{children}</div>
+
+          {/* Article */}
+          <div className="prose-fitcalc mt-16 border-t border-border pt-12">{article}</div>
+
+          {/* In-article ad */}
+          <div className="mt-10">
+            <InArticleAd />
+          </div>
+
+          {/* FAQ */}
+          <div className="mt-16 border-t border-border pt-12">
+            <h2 className="font-display text-2xl font-medium">{t.calculator.faqTitle}</h2>
+            <div className="mt-6 space-y-6">
+              {faqs.map((f) => (
+                <div key={f.question}>
+                  <h3 className="font-medium">{f.question}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-foreground/65">{f.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Related calculators */}
+          {related.length > 0 && (
+            <div className="mt-16 border-t border-border pt-12">
+              <h2 className="font-display text-2xl font-medium">{t.calculator.relatedCalculators}</h2>
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                {related.map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/calculators/${r.slug}`}
+                    className="rounded-card border border-border p-4 text-sm transition-colors hover:border-emerald"
+                  >
+                    <p className="font-medium">{localizedCalculatorTitle(r, locale)}</p>
+                    <p className="mt-1 text-foreground/55">{localizedCalculatorDescription(r, locale)}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-      )}
+
+        {/* Sidebar ad — desktop only, sticky within the viewport as the page scrolls */}
+        <aside className="hidden lg:block">
+          <div className="sticky top-24">
+            <SidebarAd />
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }
